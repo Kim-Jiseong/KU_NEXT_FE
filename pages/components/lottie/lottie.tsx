@@ -4,6 +4,8 @@ import Programming from "public/assets/lottie/programming.json";
 import Session from "public/assets/lottie/session.json";
 import Project from "public/assets/lottie/project.json";
 import Demoday from "public/assets/lottie/demoday.json";
+import Launch from "public/assets/lottie/launch.json";
+import Fire from "public/assets/lottie/fire.json";
 import { useLottie, useLottieInteractivity } from "lottie-react";
 
 export default function RocketLottie() {
@@ -73,10 +75,20 @@ const DemodayLottie = () => {
   return View;
 };
 
+const FireLottie = () => {
+  const options = {
+    animationData: Fire,
+  };
+  const style = { width: "100%", height: "100%", transform: "rotate(180deg)" };
+  const { View } = useLottie(options, style);
+  return View;
+};
+
 export {
   RocketLottie,
   LaptopLottie,
   SessionLottie,
   ProjectLottie,
   DemodayLottie,
+  FireLottie,
 };
