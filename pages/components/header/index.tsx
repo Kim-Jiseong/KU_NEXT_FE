@@ -8,7 +8,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import "antd/dist/reset.css";
 import { useRouter } from "next/router";
-
+import { motion } from "framer-motion";
 const Links = [
   { name: "HOME", path: URLS.HOME },
   { name: "ABOUT US", path: URLS.ABOUT_US },
@@ -16,7 +16,10 @@ const Links = [
   { name: "PEOPLE", path: URLS.PEOPLE },
   { name: "JOIN US", path: URLS.JOIN_US },
 ];
-
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "-100%" },
+};
 const NavBar = () => {
   const router = useRouter();
   const pathname = router.pathname;
@@ -56,10 +59,32 @@ const NavBar = () => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
-  const handleAnimationEnd = () => {
-    if (!isOpen) {
-      setShouldRender(false);
-    }
+  // const handleAnimationEnd = () => {
+  //   if (!isOpen) {
+  //     setShouldRender(false);
+  //   }
+  // };
+  const sidebar = {
+    open: (height = 1000) => ({
+      x: 0,
+      // clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+        // restDelta: 2,
+      },
+    }),
+    closed: {
+      x: "-100%",
+      // clipPath: "circle(30px at 40px 40px)",
+      transition: {
+        delay: 0.5,
+        type: "spring",
+        stiffness: 200,
+        damping: 40,
+      },
+    },
   };
   useEffect(() => {
     if (isOpen) {
@@ -90,97 +115,149 @@ const NavBar = () => {
                   <span></span>
                 </S.HamburgerContainer>
               </S.Header>
-              {shouldRender && (
+              <motion.nav
+                animate={isOpen ? "open" : "closed"}
+                variants={sidebar}
+                initial={false}
+              >
                 <S.MenuContainer
                   isOpen={isOpen}
-                  onAnimationEnd={handleAnimationEnd}
+                  // animate={isOpen ? "open" : "closed"}
+                  // variants={sidebar}
                 >
-                  <Menu
-                    theme="dark"
-                    mode="inline"
-                    onOpenChange={onOpenChange}
-                    openKeys={openKeys}
-                  >
-                    <Menu.Item
-                      key="0"
-                      onClick={() => {
-                        router.push("home");
-                      }}
-                    >
-                      HOME
-                    </Menu.Item>
-                    <SubMenu key="sub1" title="ABOUT US">
-                      <Menu.Item
-                        key="1"
-                        onClick={() => router.push("/about", "1")}
-                      >
-                        Introduction
-                      </Menu.Item>
-                      <Menu.Item
-                        key="2"
-                        onClick={() => router.push("/about", "2")}
-                      >
-                        History
-                      </Menu.Item>
-                      <Menu.Item
-                        key="3"
-                        onClick={() => router.push("/about", "3")}
-                      >
-                        Curriculum
-                      </Menu.Item>
-                      <Menu.Item
-                        key="4"
-                        onClick={() => router.push("/about", "4")}
-                      >
-                        Alumni
-                      </Menu.Item>
-                      <Menu.Item
-                        key="5"
-                        onClick={() => router.push("/about", "5")}
-                      >
-                        Achievement
-                      </Menu.Item>
-                      <Menu.Item
-                        key="6"
-                        onClick={() => router.push("/about", "6")}
-                      >
-                        Press Release
-                      </Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub2" title="ACTIVITIES">
-                      <Menu.Item
-                        key="7"
-                        onClick={() => router.push("/activities", "1")}
-                      >
-                        Session
-                      </Menu.Item>
-                      <Menu.Item
-                        key="8"
-                        onClick={() => router.push("/activities", "2")}
-                      >
-                        Hackathon
-                      </Menu.Item>
-                      <Menu.Item
-                        key="9"
-                        onClick={() => router.push("/activities", "3")}
-                      >
-                        Start-up
-                      </Menu.Item>
-                    </SubMenu>
-                    <Menu.Item key="10" onClick={() => router.push("/join")}>
-                      JOIN US
-                    </Menu.Item>
-                    <S.NoticeContainer>
-                      <p>ⓒ NEXT X Likelion</p>
-                      <p>korea@likelion.org</p>
-
-                      <p>korea university, Anam-dong, Seongbuk-gu,</p>
-                      <p>Seoul, South Korea</p>
-                    </S.NoticeContainer>
-                  </Menu>
+                  <S.MenuWrapper>
+                    {Links.map(({ name, path }) => (
+                      <>
+                        <S.Menu
+                          onClick={() => {
+                            router.push(path);
+                            setIsOpen((prev) => !prev);
+                          }}
+                          selected={pathname === path ? true : false}
+                          key={name}
+                        >
+                          {name}
+                        </S.Menu>
+                        {path === "/about" && (
+                          <S.SubMenuContainer>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "1" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Introductions
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "2" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Greeting
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "3" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              History
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "4" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Achievement
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "5" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Partners
+                            </S.SubMenu>
+                          </S.SubMenuContainer>
+                        )}
+                        {path === "/activities" && (
+                          <S.SubMenuContainer>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "1" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Curriculum
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "2" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Session
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "3" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Project
+                            </S.SubMenu>
+                            <S.SubMenu
+                              onClick={() => {
+                                router.push({
+                                  pathname: path,
+                                  query: { key: "4" },
+                                });
+                                setIsOpen((prev) => !prev);
+                              }}
+                            >
+                              Demoday
+                            </S.SubMenu>
+                          </S.SubMenuContainer>
+                        )}
+                      </>
+                    ))}
+                  </S.MenuWrapper>
+                  <S.NoticeContainer>
+                    <p>ⓒ NEXT X Likelion</p>
+                    <p>korea@likelion.org</p>
+                    <p>korea university, Anam-dong, Seongbuk-gu,</p>
+                    <p>Seoul, South Korea</p>
+                  </S.NoticeContainer>
                 </S.MenuContainer>
-              )}
+              </motion.nav>
             </S.Container>
+
             {/* <S.HeaderWhiteSpace /> */}
           </>
         )}
