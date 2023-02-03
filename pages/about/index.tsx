@@ -12,15 +12,17 @@ import Introduction from "pages/about/components/introduction";
 import Greeting from "pages/about/components/greeting";
 import History from "pages/about/components/history";
 import Achievement from "pages/about/components/achievement";
-
+import { useRouter } from "next/router";
 const { INTRODUCTION, GREETING, HISTORY, ACHIEVEMENT, PARTNERS } = ABOUT_ITEMS;
 
 export default function About() {
-  // const router = useRouter();
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const isDesktop = useMediaQuery({ minDeviceWidth: 820 });
   const isMobile = useMediaQuery({ maxWidth: 820 });
   const isTabCenter = useMediaQuery({ minWidth: 500 });
+  const key = router.query.key;
+  const [viewKey, setViewKey] = useState<any>("1");
 
   useEffect(() => {
     AOS.init();
@@ -28,6 +30,12 @@ export default function About() {
       setLoading(false);
     }
   }, []);
+  useEffect(() => {
+    if (key) {
+      setViewKey(key);
+    }
+  }, [router]);
+
   return (
     <>
       <Head>
@@ -40,7 +48,9 @@ export default function About() {
       {!loading && (
         <S.Container isMobile={isMobile}>
           <Tabs
-            defaultActiveKey="1"
+            defaultActiveKey={"1"}
+            activeKey={viewKey}
+            onChange={(key) => setViewKey(key)}
             centered={isTabCenter}
             items={[
               {
@@ -56,17 +66,17 @@ export default function About() {
               {
                 label: HISTORY,
                 key: "3",
-                children: <History />
+                children: <History />,
               },
               {
                 label: ACHIEVEMENT,
                 key: "4",
-                children: <Achievement />
+                children: <Achievement />,
               },
               {
                 label: PARTNERS,
                 key: "5",
-                children: <Partners />
+                children: <Partners />,
               },
             ]}
           />
