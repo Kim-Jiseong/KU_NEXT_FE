@@ -39,7 +39,7 @@ export default function Activities() {
       {!loading && (
         <S.Container isMobile={isMobile}>
           <Tabs
-            defaultActiveKey="3"
+            defaultActiveKey="1"
             centered={isTabCenter}
             items={[
               {

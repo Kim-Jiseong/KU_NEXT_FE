@@ -141,6 +141,11 @@ export const TextWrapper = styled.div<{ isMobile: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
+
+  & > p:first-child {
+    margin-bottom: 3rem;
+  }
+
   & p {
     line-height: 150%;
   }
@@ -148,13 +153,23 @@ export const TextWrapper = styled.div<{ isMobile: boolean }>`
     width: 47%;
     margin-top: 4rem;
   }
-  & > span {
+
+  & > p:first-child b {
+    color: ${THEME.ORANGE};
     font-size: 3.6rem;
     font-weight: 600;
+    margin-bottom: 9rem;
   }
-  & span b {
-    color: ${THEME.ORANGE};
+
+  & p {
+    font-size: 2.4rem;
   }
+
+  & .test {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+  }
+
   ${(props) =>
     props.isMobile &&
     css`
@@ -168,7 +183,7 @@ export const TextWrapper = styled.div<{ isMobile: boolean }>`
     `}
 `;
 export const LottieContainer = styled.div<{ isMobile: boolean }>`
-  width: 125%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 6rem 10%;
@@ -184,6 +199,7 @@ export const LottieContainer = styled.div<{ isMobile: boolean }>`
     css`
       flex-direction: column;
       align-items: center;
+      padding: 5rem 0;
     `}
 `;
 export const ArrowBG = styled.div<{ isMobile: boolean }>`
@@ -223,15 +239,16 @@ export const LottieWrapper = styled.div<{ isMobile: boolean }>`
 `;
 
 export const ScheduleContainer = styled.div<{ isMobile: boolean }>`
-  width: 125%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 6rem 10%;
+  padding: 6rem 0;
   position: relative;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 1421px) {
-    justify-content: center;
+  @media screen and (max-width: 1281px) {
+    width: 90%;
+    /* justify-content: center; */
   }
 
   ${(props) =>
@@ -240,10 +257,19 @@ export const ScheduleContainer = styled.div<{ isMobile: boolean }>`
       flex-direction: column;
       align-items: center;
     `}
+
+  & > div:first-child > div > p {
+    right: -2rem;
+  }
+
+  @media screen and (max-width: 954px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ScheduleWrapper = styled.div<{ isMobile: boolean }>`
-  width: 23%;
+  width: 25%;
   height: 18rem;
   display: flex;
   align-items: center;
@@ -259,11 +285,42 @@ export const ScheduleWrapper = styled.div<{ isMobile: boolean }>`
     margin: 1rem;
   }
 
-  @media screen and (max-width: 1421px) {
-    width: 35%;
-    height: 15rem;
+  @media screen and (max-width: 1680px) {
+    width: 21%;
+    height: 13rem;
+
+    & h2 {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    & p {
+      font-size: 1.3rem;
+      line-height: 150%;
+      margin: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 1281px) {
+    width: 34rem;
+    height: 13rem;
     margin-bottom: 6rem;
   }
+
+  /* @media screen and (max-width: 1300px) {
+    width: 25%;
+    height: 15rem;
+    margin-bottom: 6rem;
+
+    & h2 {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    & p {
+      font-size: 1.5rem;
+      line-height: 150%;
+      margin: 1rem;
+    }
+  } */
 
   ${(props) =>
     props.isMobile &&
@@ -275,18 +332,38 @@ export const ScheduleWrapper = styled.div<{ isMobile: boolean }>`
 
 export const ScheduleEventBox = styled.div`
   position: relative;
-  width: 35%;
-  height: 100%;
+  width: 13rem;
+  height: 90%;
   background-color: ${THEME.ORANGE};
   font-weight: 700;
+  margin-right: 1.3rem;
 
   & p {
     position: absolute;
     bottom: -2rem;
-    right: -2rem;
-    font-size: 12rem;
+    right: -1rem;
+    font-size: 9rem;
     line-height: 110%;
     color: #ffffff;
+  }
+
+  @media screen and (max-width: 1680px) {
+    width: 9rem;
+    height: 12rem;
+    margin-bottom: 0rem;
+
+    & p {
+      font-size: 6rem;
+    }
+
+    /* @media screen and (max-width: 1300px) {
+    width: 80%;
+    height: 15rem;
+    margin-bottom: 6rem;
+
+    & p {
+      font-size: 9rem;
+    } */
   }
 `;
 

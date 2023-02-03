@@ -7,6 +7,7 @@ import thumbnail from "public/img/thumbnail.png";
 import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { ChakraProvider } from "@chakra-ui/react";
 // import * as gtag from "libs/gtag";
 import Head from "next/head";
 import Header from "pages/components/header";
@@ -32,14 +33,15 @@ export default function App({
   return (
     <SessionProvider session={pageProps.session}>
       <RecoilRoot>
-        <GlobalStyle>
-          <Head>
-            <title>NEXT</title>
-          </Head>
-          <Header></Header>
-          {/* GA 설정 시작 */}
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {/* <Script
+        <ChakraProvider>
+          <GlobalStyle>
+            <Head>
+              <title>NEXT</title>
+            </Head>
+            <Header></Header>
+            {/* GA 설정 시작 */}
+            {/* Global Site Tag (gtag.js) - Google Analytics */}
+            {/* <Script
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
           />
@@ -57,9 +59,10 @@ export default function App({
       `,
             }}
           /> */}
-          {/* GA 설정 끝 */}
-          <Component {...pageProps} />
-        </GlobalStyle>
+            {/* GA 설정 끝 */}
+            <Component {...pageProps} />
+          </GlobalStyle>
+        </ChakraProvider>
       </RecoilRoot>
     </SessionProvider>
   );
