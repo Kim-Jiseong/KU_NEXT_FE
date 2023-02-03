@@ -6,6 +6,8 @@ import Project from "public/assets/lottie/project.json";
 import Demoday from "public/assets/lottie/demoday.json";
 import DemodayFinal from "public/assets/lottie/demoday-final.json";
 import DemodayInHouse from "public/assets/lottie/demoday-in-house.json";
+import Launch from "public/assets/lottie/launch.json";
+import Fire from "public/assets/lottie/fire.json";
 import { useLottie, useLottieInteractivity } from "lottie-react";
 
 export default function RocketLottie() {
@@ -75,6 +77,7 @@ const DemodayLottie = () => {
   return View;
 };
 
+
 const DemodayFinalLottie = () => {
   const options = {
     animationData: DemodayFinal,
@@ -92,6 +95,13 @@ const DemodayInHouseLottie = () => {
   const style = { width: "100%" };
   const { View } = useLottie(options, style);
 
+
+const FireLottie = () => {
+  const options = {
+    animationData: Fire,
+  };
+  const style = { width: "100%", height: "100%", transform: "rotate(180deg)" };
+  const { View } = useLottie(options, style);
   return View;
 };
 
@@ -103,4 +113,5 @@ export {
   DemodayLottie,
   DemodayFinalLottie,
   DemodayInHouseLottie,
+  FireLottie,
 };

@@ -23,7 +23,10 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [fullscreen, setFullscreen] = useState<number>();
-  const logoSrc = pathname === URLS.HOME ? LogoImg : BlackLogoImg;
+  const logoSrc =
+    pathname === URLS.HOME || pathname === URLS.JOIN_US
+      ? LogoImg
+      : BlackLogoImg;
   const [openKeys, setOpenKeys] = useState(["sub1"]);
   const { SubMenu } = Menu;
   const [shouldRender, setShouldRender] = useState(false);
@@ -200,7 +203,7 @@ const NavBar = () => {
           <S.NavLinkWrapper>
             {Links.map(({ name, path }) => (
               <S.StyledNav
-                isWhite={pathname === URLS.HOME}
+                isWhite={pathname === URLS.HOME || pathname === URLS.JOIN_US}
                 onClick={() => {
                   router.push(path);
                 }}
