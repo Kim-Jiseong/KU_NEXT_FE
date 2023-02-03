@@ -77,7 +77,6 @@ const DemodayLottie = () => {
   return View;
 };
 
-
 const DemodayFinalLottie = () => {
   const options = {
     animationData: DemodayFinal,
@@ -94,7 +93,7 @@ const DemodayInHouseLottie = () => {
   };
   const style = { width: "100%" };
   const { View } = useLottie(options, style);
-
+};
 
 const FireLottie = () => {
   const options = {
