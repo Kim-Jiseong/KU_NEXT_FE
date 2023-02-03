@@ -13,6 +13,7 @@ const Links = [
   { name: "HOME", path: URLS.HOME },
   { name: "ABOUT US", path: URLS.ABOUT_US },
   { name: "ACTIVITIES", path: URLS.ACTIVITIES },
+  { name: "PEOPLE", path: URLS.PEOPLE },
   { name: "JOIN US", path: URLS.JOIN_US },
 ];
 
