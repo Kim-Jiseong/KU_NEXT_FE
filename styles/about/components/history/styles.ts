@@ -20,20 +20,27 @@ export const fadeIn = keyframes`
 
 export const Container = styled.div<{ isMobile: boolean }>`
   width: 100%;
-  padding: 6rem 1.5rem;
+  padding: 6rem 3rem;
   background: white;
   display: relative;
 
   ${(props) =>
     props.isMobile &&
     css`
-      padding: 0;
-      padding-left: 8rem;
-      & div {
-        padding-bottom: 5rem;
-      }
+        width: 100%;
+        padding: 2rem 2rem;
     `}
 `;
+
+// export const MainWrapper = styled.div<{ isMobile: boolean }>`
+//   width: 100%;
+
+//   ${(props) =>
+//     props.isMobile &&
+//     css`
+//         width: 100%;
+//     `}
+// `;
 
 export const MainContainer = styled.div<{ isMobile: boolean }>`
   display: flex;
@@ -41,21 +48,16 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5rem;
+
+  padding-left: 12rem;
 
 
   ${(props) =>
     props.isMobile &&
     css`
-      padding: 10rem 8%;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding-left: 6rem;
       & div {
-        display: flex;
-        flex-direction: column;
         width: 100%;
-        padding-bottom: 5rem;
       }
     `}
 `;
@@ -63,7 +65,7 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
 
 export const TextWrapper = styled.div`
   width: 61.8%;
-  padding: 0rem 8rem 10rem;
+  padding-bottom: 8rem;
 
   display: flex;
   flex-direction: column;
@@ -73,23 +75,20 @@ export const TextWrapper = styled.div`
 
 
 export const FlexRow = styled.div`
-  padding: 0;
-  margin: 0;
-
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: flex-start;
 
 `;
 
 
-export const TitleTextElementWrapper = styled.div`
+export const TitleTextElementWrapper = styled.div<{ isMobile: boolean }>`
   width: 100%;
   position: relative;
   padding-bottom: 1.6rem;
 
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   word-break: keep-all;
   color: #000;
   overflow: hidden;
@@ -104,11 +103,18 @@ export const TitleTextElementWrapper = styled.div`
   & span b {
     color: ${THEME.ORANGE};
   }
+
+  ${(props) =>
+    props.isMobile &&
+    css`
+    font-size: 2.0rem;
+      }
+  `}
 }
 `;
 
 
-export const TextElementWrapper = styled.div`
+export const TextElementWrapper = styled.div<{ isMobile: boolean }>`
   width: 100%;
   position: relative;
 
@@ -132,6 +138,13 @@ export const TextElementWrapper = styled.div`
   & span b {
     color: ${THEME.ORANGE};
   }
+
+  ${(props) =>
+    props.isMobile &&
+    css`
+    font-size: 1.5rem;
+      }
+  `}
 }
 `;
 
