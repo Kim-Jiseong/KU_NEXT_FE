@@ -20,6 +20,7 @@ import Sticky from "pages/components/sticky";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
+import { ImageElementWrapper } from "styles/about/components/partners/styles";
 export default function Main() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);

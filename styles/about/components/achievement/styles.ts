@@ -94,27 +94,28 @@ export const ImageWrapper = styled.div<{ isMobile: boolean }>`
 `;
 
 export const ImageElementWrapper = styled.div`
-  width: 10%;
-  min-width: 100px;
-  position: relative;
-  &:after {
-    content: "";
-    padding-bottom: 100%;
-    display: block;
-  }
-  & img {
-    position: absolute;
+width: 10%;
+min-width: 100px;
+position: relative;
+&:after {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+& img {
+  position: absolute;
 
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-    transition: all 0.2s linear;
-  }
+  transition: all 0.2s linear;
+}
 
-  & img:hover {
-    transform: scale(1.13);
+& img:hover {
+  transform: scale(1.13);
 `;
+
 
 // export const PartnerContainer = styled.div<{ isMobile: boolean }>`
 //   width: 100%;
