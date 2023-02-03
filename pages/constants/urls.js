@@ -3,5 +3,6 @@ export const URLS = {
   HOME: "/home",
   ABOUT_US: "/about",
   ACTIVITIES: "/activities",
+  PEOPLE: "/people",
   JOIN_US: "/join",
 };

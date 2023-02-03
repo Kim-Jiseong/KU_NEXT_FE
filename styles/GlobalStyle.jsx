@@ -1,5 +1,19 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { keyframes } from "styled-components";
+import { THEME } from "styles/theme";
+
+export const smoothAppear = keyframes`
+from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const GlobalStyleWrapper = createGlobalStyle`
 
 
@@ -48,11 +62,38 @@ const GlobalStyleWrapper = createGlobalStyle`
   -ms-user-select:none;
   user-select:none;
  -ms-overflow-style: none;
- 
-
   /* overflow-x: hidden; */
   /* font-family: -apple-system, InkLipquid; */
-}
+  }
+
+
+  --antd-wave-shadow-color: ${THEME.ORANGE} !important;
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: ${THEME.ORANGE} !important;
+  }
+  .ant-tabs-tab:hover,
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:focus,
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-remove:active {
+    color: ${THEME.ORANGE} !important;
+  }
+  .ant-tabs-ink-bar {
+    background: ${THEME.ORANGE} !important;
+  }
+
+  .ant-tabs-tab {
+    margin: 0 3.2rem 0 3.2rem !important;
+    @media screen and (max-width: 820px) {
+      margin: 0 1.6rem !important;
+    }
+  }
+
+  a:hover,
+  a:active {
+    color: ${THEME.ORANGE};
+  }
+
 @font-face {
     font-family: 'NanumSquareNeo-Variable';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
@@ -87,6 +128,10 @@ const GlobalStyleWrapper = createGlobalStyle`
     html {
       font-size: 7.5px;
     }
+  }
+
+  .mount {
+    animation: ${smoothAppear} 0.5s;
   }
 `;
 
