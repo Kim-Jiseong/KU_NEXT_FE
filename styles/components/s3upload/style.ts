@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const FileInputBtn = styled.label`
   /* width: 30%; */
   height: 40px;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid ${THEME.ORANGE};
   color: ${THEME.ORANGE};
   font-size: 2rem;
