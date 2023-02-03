@@ -93,6 +93,7 @@ const DemodayInHouseLottie = () => {
   };
   const style = { width: "100%" };
   const { View } = useLottie(options, style);
+  return View;
 };
 
 const FireLottie = () => {
