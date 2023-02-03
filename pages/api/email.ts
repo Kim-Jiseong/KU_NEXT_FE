@@ -49,7 +49,11 @@ async function handler(req: any, res: any) {
       });
       res.status(200).json({ data: response.data });
     } catch (err: any) {
-      res.status(500).json({ message: err.message ?? "뭔가 잘못되었습니다" });
+      res
+        .status(500)
+        .json({
+          message: err.message ?? "뭔가 잘못되었습니다. Something went wrong",
+        });
     }
   }
 }

@@ -1,116 +1,173 @@
-// 이 파일은 사용하지 않습니다 We don't use this file
+// import { mailOptions, transporter } from "config/nodemailer";
+import nodemailer from "nodemailer";
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// import type { NextApiRequest, NextApiResponse } from "next";
-import nextConnect from "next-connect";
+const email = process.env.NODEMAILER_EMAIL;
+const pass = process.env.NODEMAILER_PASSWORD;
 
-const handler = nextConnect();
+export const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: email,
+    pass: pass,
+  },
+});
 
-// export const config = {
-//   api: {
-//     bodyParser: {
-//       bodyParser: false,
-//       sizeLimit: "200mb", // Set desired value here
-//     },
-//   },
-// };
-// type Data = {
-//   name: string;
-// };
-// interface info {
-//   name: string;
-//   studentNumber: string;
-//   email: string;
-//   phone: string;
-//   attachment: string;
-// }
-// const CONTACT_MESSAGE_FIELDS: info = {
-//   name: "이름",
-//   studentNumber: "학번",
-//   email: "Email",
-//   phone: "전화번호",
-//   attachment: "첨부파일",
-// };
+const CONTACT_MESSAGE_FIELDS = {
+  name: "이름",
+  studentNumber: "학번",
+  email: "Email",
+  phone: "전화번호",
+};
 
-// const generateEmailContent = (data: any) => {
-//   const stringData = Object.entries(data).reduce(
-//     (str, [key, val]) =>
-//       (str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
-//     ""
-//   );
-//   const htmlData = Object.entries(data).reduce((str, [key, val]) => {
-//     return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${val}</p>`);
-//   }, "");
+const generateEmailContent = (data: any) => {
+  const name = data.name;
+  const studentNumber = data.studentNumber;
+  const receivedEmail = data.email;
+  const phone = data.phone;
+  const file = data.file;
+  return {
+    html: `<!DOCTYPE html>
+    <html>
+      <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <style type="text/css">
+          body,
+          a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+          }
+          body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+          }
+          @media screen and (max-width: 525px) {
+            .wrapper {
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+            .responsive-table {
+              width: 100% !important;
+            }
+            .padding {
+              padding: 10px 5% 15px 5% !important;
+            }
+            .section-padding {
+              padding: 0 15px 50px 15px !important;
+            }
+          }
+          img {
+            width: 100%;
+          }
+          mark {
+            background-color: "#F7941E" !important;
+            font-weight: 600;
+            color: #151515;
+          }
+          b {
+            color: "#F7941E" !important;
+          }
+          .form-container {
+            width: 100%;
+            background-color: #151515;
+            color: white;
+          }
+          .content-wrapper {
+            width: 80%;
+            margin: 0 auto;
+            padding: 60px;
+          }
+          .info {
+            display: flex;
+            flex-direction: column;
+          }
+        </style>
+      </head>
+      <body style="margin: 0 !important; padding: 0 !important; background: #fff">
+        <div class="form-container">
+          <img
+            alt="img"
+            src="https://next-recruit.s3.ap-northeast-2.amazonaws.com/assets/mail-main.png"
+          />
+          <div class="content-wrapper">
+            <h2>${name}님, NEXT 11기에 지원해주셔서 감사합니다</h2>
+            <p>아래는 제출하신 정보입니다</p>
+            <p>이름: ${name}</p>
+            <p>학번: ${studentNumber}</p>
+            <p>email: ${receivedEmail}</p>
+            <p>전화번호: ${phone}</p>
+            <p>파일명: ${file}</p>
+            <div class="info" style="display: flex; flex-direction: column">
+              <h2>11기 지원 안내</h2>
+              <br />
+              <p>
+                <span style="color: #f7941e"
+                  >1. 면접 촬영 및 개인정보 수집 안내</span
+                >
+                <br />
+                면접 평가는 모두 대면으로 이뤄집니다. <br />
+                공정한 면접 평가를 위해 면접 내용을 촬영 및 수집할 예정입니다.
+                <br />
+                촬영한 면접영상 및 개인정보는 선발과정에서만 활용되며, 리크루팅 이후
+                즉시 폐기될 예정입니다. <br />
+                <br />
+                <span style="color: #f7941e">2. 학회 보증금 제도 안내</span> <br />
+                원활한 학회 운영을 위해 보증금 제도를 운영하고 있습니다.
+                <br />
+                새로 들어오시는 학회원들은 <b style="color: #f7941e">10만원</b>의
+                보증금을 납부하고, 해당 보증금은 학회 운영비용으로만 사용될
+                예정입니다.
+                <br />
+                학회원들은 모든 회계 정산 내용을 구글 드라이브에서 확인하실 수
+                있으며 활동이 끝난 후 남은 금액을 1/n 하여 전액 반환해 드립니다.
+                <br />
+                <br />
+                <span style="color: #f7941e">3. 오리엔테이션 필참</span>
+                <br />
+                최종 합격 이후 <b style="color: #f7941e">3월 5일</b>에 진행되는 OT는
+                필수 참여입니다. 원활한 학회 운영을 위해, OT를 고려하여 개인 일정을
+                조정해주시면 감사하겠습니다
+              </p>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+    
+    `,
+  };
+};
 
-//   return {
-//     text: stringData,
-//     html: `<!DOCTYPE html><html> <head> <title></title> <meta charset="utf-8"/> <meta name="viewport" content="width=device-width, initial-scale=1"/> <meta http-equiv="X-UA-Compatible" content="IE=edge"/> <style type="text/css"> body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}table{border-collapse: collapse !important;}body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}@media screen and (max-width: 525px){.wrapper{width: 100% !important; max-width: 100% !important;}.responsive-table{width: 100% !important;}.padding{padding: 10px 5% 15px 5% !important;}.section-padding{padding: 0 15px 50px 15px !important;}}.form-container{margin-bottom: 24px; padding: 20px; border: 1px dashed #ccc;}.form-heading{color: #2a2a2a; font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-weight: 400; text-align: left; line-height: 20px; font-size: 18px; margin: 0 0 8px; padding: 0;}.form-answer{color: #2a2a2a; font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-weight: 300; text-align: left; line-height: 20px; font-size: 16px; margin: 0 0 24px; padding: 0;}div[style*="margin: 16px 0;"]{margin: 0 !important;}</style> </head> <body style="margin: 0 !important; padding: 0 !important; background: #fff"> <div style=" display: none; font-size: 1px; color: #fefefe; line-height: 1px;  max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; " ></div><table border="0" cellpadding="0" cellspacing="0" width="100%"> <tr> <td bgcolor="#ffffff" align="center" style="padding: 10px 15px 30px 15px" class="section-padding" > <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px" class="responsive-table" > <tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="0"> <tr> <td> <table width="100%" border="0" cellspacing="0" cellpadding="0" > <tr> <td style=" padding: 0 0 0 0; font-size: 16px; line-height: 25px; color: #232323; " class="padding message-content" > <h2>새 지원서 도착</h2> <div class="form-container">${htmlData}</div></td></tr></table> </td></tr></table> </td></tr></table> </td></tr></table> </body></html>`,
-//   };
-// };
-// handler.post(async (req: any, res: any) => {
-//   console.log("도착", req.body);
-//   try {
-//     const files = req.body.data.files;
-//     const body = req.body;
-//     console.log("파일", files);
-//     console.log("바디", body);
-//     var object = {};
-//     // body.forEach(function (value, key) {
-//     //   object[key] = value;
-//     // });
-//     // var json = JSON.stringify(object);
-//     // do stuff with files and body
-//     res.status(HttpStatus.OK).json({ message: body });
-//   } catch (err: any) {
-//     console.log("에러", err.message);
-//     res.status(HttpStatus.BAD_REQUEST).json({ error: err.message });
-//   }
-// });
-// const data = await new Promise((resolve, reject) => {
-//   const form = formidable();
+const handler = async (req: any, res: any) => {
+  if (req.method === "POST") {
+    const data = req.body.data;
+    console.log("여기임", data);
+    const mailOptions = {
+      from: email,
+      to: data.email,
+    };
 
-//   form.parse(req, (err, fields, files) => {
-//     if (err) reject({ err });
-//     resolve({ err, fields, files });
-//     console.log(fields, files);
-//   });
-// });
-// res.status(200).json({
-//   status: "ok",
-//   data,
-// });
+    if (!data || !data.name || !data.email) {
+      return res.status(400).send({ message: "Bad request. 똑바로보내" });
+    }
 
-// ---------------
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateEmailContent(data),
+        subject: `${data.name}님 NEXT 11기에 지원해주셔서 감사합니다`,
+      });
 
-//   if (
-//     !data ||
-//     !data.name ||
-//     !data.studentNumber ||
-//     !data.email ||
-//     !data.phone
-//   ) {
-//     return res.status(400).send({ message: "Bad request임" });
-//   }
-
-//   try {
-//     await transporter.sendMail({
-//       ...mailOptions,
-//       ...generateEmailContent(data),
-//       subject: `${data.name}님의 지원`,
-//       attachments: [
-//         {
-//           filename: `${data.name}(${data.studentNumber})님의 지원서`,
-//           path: data.attachment,
-//         },
-//       ],
-//     });
-
-//     return res.status(200).json({ success: true });
-//   } catch (err: any) {
-//     console.log(err);
-//     return res.status(400).json({ message: err.message });
-//   }
-// }
-// // return res.status(400).json({ message: "Bad request" });
-// };
+      return res.status(200).json({ success: true });
+    } catch (err: any) {
+      console.log(err);
+      return res.status(400).json({ message: `여기틀림, ${err.message}` });
+    }
+  }
+  return res.status(400).json({ message: "Bad request예요" });
+};
 export default handler;

@@ -2,6 +2,9 @@ import { useS3Upload } from "next-s3-upload";
 import { useEffect, useState } from "react";
 import * as S from "styles/components/s3upload/style";
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { sendContactForm } from "pages/lib/api";
+import { joinModalOpen, isLaunched } from "pages/constants/atoms";
 import {
   Button,
   Container,
@@ -26,10 +29,12 @@ const initState = { isLoading: false, error: "", values: initValues };
 
 export default function UploadPage() {
   const toast = useToast();
+  const [launch, setLaunch] = useRecoilState(isLaunched);
+  const [infoOpen, setInfoOpen] = useRecoilState(joinModalOpen);
   const [state, setState] = useState(initState);
   const [s3url, setS3url] = useState<any>("");
-  const [file, setFile] = useState<any>();
-  let { uploadToS3, files } = useS3Upload();
+  const [file, setFile] = useState<any>("");
+  let { uploadToS3, files, resetFiles } = useS3Upload();
   const { values, isLoading, error } = state;
   const [touched, setTouched] = useState<any>({});
   const onBlur = ({ target }: any) =>
@@ -70,16 +75,26 @@ export default function UploadPage() {
         setTouched({});
         setState(initState);
         setS3url("");
+        setFile("");
+        setInfoOpen(false);
+        setLaunch(true);
+        // --------------------------
+        sendContactForm(values);
+        // --------------------------
         toast({
           title: "제출되었습니다!",
           status: "success",
-          duration: 2000,
+          duration: 3000,
           position: "top",
         });
       })
       .catch((error) => {
         console.log(error, error.message);
-        alert(error.message);
+        setState((prev) => ({
+          ...prev,
+          isLoading: false,
+        }));
+        alert(`문제가 발생했습니다. 다시 시도해주세요.${error.message}`);
       });
   };
   const onSubmit = async () => {
@@ -116,7 +131,9 @@ export default function UploadPage() {
     <S.Container>
       <S.FormContainer>
         <div>
-          <Heading fontSize={"2rem"}>지원하기</Heading>
+          <Heading fontSize={"2rem"} mb={5}>
+            지원하기
+          </Heading>
           {error && (
             <Text color="red.300" my={4} fontSize="xl">
               {error}
@@ -143,7 +160,7 @@ export default function UploadPage() {
 
           <FormControl
             isRequired
-            isInvalid={touched.email && !values.email}
+            isInvalid={touched.studentNumber && !values.studentNumber}
             mb={5}
           >
             <FormLabel fontSize={"1.8rem"}>학번</FormLabel>
@@ -225,7 +242,7 @@ export default function UploadPage() {
         colorScheme="orange"
         p={10}
         isLoading={isLoading}
-        disabled={
+        isDisabled={
           !values.name ||
           !values.email ||
           !values.phone ||

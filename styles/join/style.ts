@@ -120,6 +120,7 @@ export const RocketContainer = styled.div<{ launched: boolean }>`
   bottom: 0;
   transform: translate(-50%, 0);
   z-index: 4;
+  cursor: pointer;
   pointer-events: auto;
   &::after {
     content: "";
@@ -162,7 +163,7 @@ export const Fire = styled.div<{ launched: boolean }>`
 
 export const ModalContainer = styled.div<{ infoOpen: boolean }>`
   width: 90%;
-  height: auto;
+  max-width: 800px;
   padding: 3rem;
   background-color: #151515;
   color: white;
@@ -172,9 +173,129 @@ export const ModalContainer = styled.div<{ infoOpen: boolean }>`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  visibility: ${(props) => (props.infoOpen ? "visible" : "hidden")};
   pointer-events: ${(props) => (props.infoOpen ? "auto" : "none")};
   /* align-items: center; */
+`;
+export const ModalContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  max-height: calc(80vh - 6rem);
+  overflow-y: scroll;
+`;
+export const CloseBtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2rem;
+  font-weight: 600;
+  & div {
+    cursor: pointer;
+  }
+`;
+export const TitleWrapper = styled.div<{ isMobile: boolean }>`
+  width: 80%;
+  max-width: 800px;
+  position: absolute;
+  /* max-height: 30vh; */
+  z-index: 4;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  pointer-events: none;
+  opacity: 0;
+  animation: ${fadeIn} 2s 4s forwards;
+  & img {
+    width: 100%;
+    /* max-height: 100%; */
+    margin-bottom: 2rem;
+    ${(props) =>
+      !props.isMobile &&
+      css`
+        width: 60%;
+      `}
+  }
+  & p {
+    font-family: "GmarketSansMedium";
+    font-weight: 700;
+    font-size: 4rem;
+  }
+`;
+export const RocketInfo = styled.div`
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  opacity: 0;
+  bottom: 20px;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  animation: ${fadeIn} 1s 4s alternate infinite;
+`;
+export const InfoModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-size: 2rem;
+    color: ${THEME.ORANGE};
+    font-weight: 500;
+  }
+  & h2 {
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 700;
+    color: ${THEME.ORANGE};
+  }
+  & mark {
+    background-color: ${THEME.ORANGE};
+    font-weight: 600;
+    color: #151515;
+  }
+  & b {
+    color: ${THEME.ORANGE};
+  }
+`;
+export const NextBtnWrapper = styled.div<{ isMobile: boolean }>`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+
+  & button {
+    width: 45%;
+    height: 4rem;
+    color: ${THEME.ORANGE};
+    border: 1px solid ${THEME.ORANGE};
+    border-radius: 4px;
+    transition: 0.5s;
+  }
+  & button:last-child {
+    color: #151515;
+    background-color: ${THEME.ORANGE};
+  }
+  & button:hover {
+    color: ${THEME.ORANGE};
+    background-color: ${THEME.LIGHT_ORANGE};
+  }
+  ${(props) =>
+    props.isMobile &&
+    css`
+      flex-direction: "column";
+      & button {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    `}
 `;

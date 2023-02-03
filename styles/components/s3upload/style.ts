@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const FileInputBtn = styled.label`
   /* width: 30%; */
   height: 40px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid ${THEME.ORANGE};
   color: ${THEME.ORANGE};
   font-size: 2rem;
@@ -27,7 +27,7 @@ export const FileInputBtn = styled.label`
 export const SubmitBtn = styled.button`
   /* width: 30%; */
   height: 40px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 1px solid ${THEME.ORANGE};
   color: ${THEME.ORANGE};
   font-size: 2rem;
@@ -52,7 +52,7 @@ export const FormContainer = styled.div`
     margin-bottom: 1rem;
     background-color: transparent;
     border: 1px solid white;
-    border-radius: 6px;
+    border-radius: 4px;
     color: white;
     font-size: 1.8rem;
     padding: 8px;
