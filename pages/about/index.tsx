@@ -4,15 +4,19 @@ import * as S from "styles/about/style";
 import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { Tabs } from "antd";
 import { ABOUT_ITEMS } from "pages/constants/about";
 import Partners from "pages/about/components/partners";
+import Introduction from "pages/about/components/introduction";
+import Greeting from "pages/about/components/greeting";
+import History from "pages/about/components/history";
+import Achievement from "pages/about/components/achievement";
 
 const { INTRODUCTION, GREETING, HISTORY, ACHIEVEMENT, PARTNERS } = ABOUT_ITEMS;
 
 export default function About() {
-  const router = useRouter();
+  // const router = useRouter();
   const [loading, setLoading] = useState(true);
   const isDesktop = useMediaQuery({ minDeviceWidth: 820 });
   const isMobile = useMediaQuery({ maxWidth: 820 });
@@ -42,31 +46,27 @@ export default function About() {
               {
                 label: INTRODUCTION,
                 key: "1",
-                children:
-                  "컴포넌트를 만들어서 이곳에 넣으면 됩니다. Partners 참조",
+                children: <Introduction />,
               },
               {
                 label: GREETING,
                 key: "2",
-                children:
-                  "컴포넌트를 만들어서 이곳에 넣으면 됩니다. Partners 참조",
+                children: <Greeting />,
               },
               {
                 label: HISTORY,
                 key: "3",
-                children:
-                  "컴포넌트를 만들어서 이곳에 넣으면 됩니다. Partners 참조",
+                children: <History />
               },
               {
                 label: ACHIEVEMENT,
                 key: "4",
-                children:
-                  "컴포넌트를 만들어서 이곳에 넣으면 됩니다. Partners 참조",
+                children: <Achievement />
               },
               {
                 label: PARTNERS,
                 key: "5",
-                children: <Partners />,
+                children: <Partners />
               },
             ]}
           />
