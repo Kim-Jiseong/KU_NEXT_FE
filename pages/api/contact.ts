@@ -157,7 +157,6 @@ const generateEmailContent = (data: any) => {
 const handler = async (req: any, res: any) => {
   if (req.method === "POST") {
     const data = req.body.data;
-    console.log("여기임", data);
     const mailOptions = {
       from: email,
       to: data.email,
