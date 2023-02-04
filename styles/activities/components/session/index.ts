@@ -4,6 +4,7 @@ import { THEME } from "styles/theme";
 export const Container = styled.div<{ isMobile: boolean }>`
   width: 100%;
   min-height: 100%;
+  padding: 6rem 3rem;
 `;
 
 export const MainContainer = styled.div<{ isMobile: boolean }>`
@@ -12,7 +13,7 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 4%;
+  padding: 0;
   box-sizing: border-box;
 
   ${(props) =>
@@ -77,8 +78,8 @@ export const SessionTitleBox = styled.div<{ isMobile: boolean }>`
 
   & > p:first-child {
     color: ${THEME.ORANGE};
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.4rem;
+    font-weight: 600;
   }
 
   & > span {
@@ -90,16 +91,16 @@ export const SessionTitleBox = styled.div<{ isMobile: boolean }>`
 
   & > p:last-child {
     color: ${THEME.BLACK_100};
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
   }
 
-  @media screen and (max-width: 1010px) {
+  @media screen and (max-width: 1090px) {
     flex-direction: column;
 
     & > p:first-child {
       color: ${THEME.ORANGE};
-      font-size: 2.3rem;
+      font-size: 2rem;
       font-weight: 700;
     }
 
@@ -114,7 +115,7 @@ export const SessionTitleBox = styled.div<{ isMobile: boolean }>`
 
     & > p:last-child {
       color: ${THEME.BLACK_100};
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 400;
     }
   }
