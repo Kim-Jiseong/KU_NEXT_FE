@@ -2,13 +2,13 @@ import styled, { css, keyframes } from "styled-components";
 import { THEME } from "styles/theme";
 
 export const ScrollProgressBar= styled.div<{ isMobile: boolean }>`{
-  width: 4px;
-  height: 87.1%;
+  width: 5px;
+  height: 94.5%;
   background-color: ${THEME.GRAY};
   position: absolute; //부모요소는 history의 index.tsx의 Container
 
-  top: 75px;
-  left: 250px;
+  top: 7rem;
+  left: 25rem;
   right: 0;
 
   z-index: 10;
@@ -17,8 +17,8 @@ export const ScrollProgressBar= styled.div<{ isMobile: boolean }>`{
   ${(props) =>
     props.isMobile &&
     css`
-      top: 115px;
-      left: 130px;
+      top: 3rem;
+      left: 3rem;
       right: 0;
       }
     `}
@@ -26,8 +26,8 @@ export const ScrollProgressBar= styled.div<{ isMobile: boolean }>`{
 `;
 
 export const ScrollProgress= styled.div<{ isMobile: boolean }>`{
-  width: 4px;
-  height: 87%;
+  width: 5px;
+  height: 94.5%;
   overflow: hidden;
   background-color: ${THEME.ORANGE};
   position: absolute;
