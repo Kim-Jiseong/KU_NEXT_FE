@@ -51,7 +51,7 @@ const NavBar = () => {
     closed: {
       x: "-100%",
       transition: {
-        delay: 0.4,
+        // delay: 0.4,
         type: "spring",
         stiffness: 600,
         damping: 40,
