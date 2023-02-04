@@ -32,8 +32,8 @@ export const Container = styled.div<{ isMobile: boolean }>`
   position: relative;
 `;
 
-export const MainImageWrapper = styled.div`
-  width: 100%;  
+export const MainImageWrapper = styled.div<{ isMobile: boolean }>`
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 
@@ -42,15 +42,33 @@ export const MainImageWrapper = styled.div`
   justify-content: center;
   position: relative;
 
-  & img {
-    width: 100%;
-  }
+&:after {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+& img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: all 0.2s linear;
+}
+
+
+${(props) =>
+  props.isMobile &&
+  css`
+
+  `}
 `;
 
 export const ContainerBG = styled.img`
   width: 100%;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   filter: grayscale(1);
   animation: ${color} 5s 0s forwards;
 `;

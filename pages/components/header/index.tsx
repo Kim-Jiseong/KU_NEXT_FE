@@ -8,7 +8,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import "antd/dist/reset.css";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 const Links = [
   { name: "HOME", path: URLS.HOME },
   { name: "ABOUT US", path: URLS.ABOUT_US },
@@ -16,28 +16,17 @@ const Links = [
   { name: "PEOPLE", path: URLS.PEOPLE },
   { name: "JOIN US", path: URLS.JOIN_US },
 ];
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
-};
 const NavBar = () => {
   const router = useRouter();
   const pathname = router.pathname;
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [fullscreen, setFullscreen] = useState<number>();
+  const [subMenu, setSubMenu] = useState("");
   const logoSrc =
     pathname === URLS.HOME || pathname === URLS.JOIN_US
       ? LogoImg
       : BlackLogoImg;
-  const [openKeys, setOpenKeys] = useState(["sub1"]);
-  const { SubMenu } = Menu;
-  const [shouldRender, setShouldRender] = useState(false);
-  const rootSubmenuKeys = ["sub1", "sub2"];
-  const menuClick = () => {
-    setIsOpen(!isOpen);
-    console.log(isOpen);
-  };
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
@@ -50,47 +39,25 @@ const NavBar = () => {
     window.addEventListener("scroll", updateScroll);
     console.log(pathname, URLS.HOME);
   }, []);
-
-  const onOpenChange = (keys: any) => {
-    const latestOpenKey = keys.find((key: any) => openKeys.indexOf(key) === -1);
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      setOpenKeys(keys);
-    } else {
-      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
-    }
-  };
-  // const handleAnimationEnd = () => {
-  //   if (!isOpen) {
-  //     setShouldRender(false);
-  //   }
-  // };
   const sidebar = {
-    open: (height = 1000) => ({
+    open: {
       x: 0,
-      // clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
       transition: {
         type: "spring",
         stiffness: 400,
         damping: 40,
-        // restDelta: 2,
       },
-    }),
+    },
     closed: {
       x: "-100%",
-      // clipPath: "circle(30px at 40px 40px)",
       transition: {
-        delay: 0.5,
+        delay: 0.4,
         type: "spring",
-        stiffness: 200,
+        stiffness: 600,
         damping: 40,
       },
     },
   };
-  useEffect(() => {
-    if (isOpen) {
-      setShouldRender(isOpen);
-    }
-  }, [isOpen]);
   if (isMobile) {
     return (
       <>
@@ -120,18 +87,23 @@ const NavBar = () => {
                 variants={sidebar}
                 initial={false}
               >
-                <S.MenuContainer
-                  isOpen={isOpen}
-                  // animate={isOpen ? "open" : "closed"}
-                  // variants={sidebar}
-                >
+                <S.MenuContainer isOpen={isOpen}>
                   <S.MenuWrapper>
                     {Links.map(({ name, path }) => (
                       <>
                         <S.Menu
                           onClick={() => {
-                            router.push(path);
-                            setIsOpen((prev) => !prev);
+                            if (name === "ABOUT US" || name === "ACTIVITIES") {
+                              if (subMenu === path) {
+                                setSubMenu("");
+                              } else {
+                                setSubMenu(path);
+                              }
+                            } else {
+                              router.push(path);
+                              setSubMenu("");
+                              setIsOpen((prev) => !prev);
+                            }
                           }}
                           selected={pathname === path ? true : false}
                           key={name}
@@ -139,111 +111,149 @@ const NavBar = () => {
                           {name}
                         </S.Menu>
                         {path === "/about" && (
-                          <S.SubMenuContainer>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "1" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Introductions
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "2" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Greeting
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "3" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              History
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "4" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Achievement
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "5" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Partners
-                            </S.SubMenu>
-                          </S.SubMenuContainer>
+                          <AnimatePresence>
+                            {subMenu === "/about" && (
+                              <motion.div
+                                initial={{ height: 0 }}
+                                animate={{ height: "auto" }}
+                                exit={{ height: 0, transition: { delay: 0.5 } }}
+                              >
+                                <S.SubMenuContainer
+                                  id="/about"
+                                  subMenu={subMenu}
+                                >
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                  >
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "1" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Introductions
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "2" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Greeting
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "3" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      History
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "4" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Achievement
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "5" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Partners
+                                    </S.SubMenu>
+                                  </motion.div>
+                                </S.SubMenuContainer>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         )}
                         {path === "/activities" && (
-                          <S.SubMenuContainer>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "1" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Curriculum
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "2" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Session
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "3" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Project
-                            </S.SubMenu>
-                            <S.SubMenu
-                              onClick={() => {
-                                router.push({
-                                  pathname: path,
-                                  query: { key: "4" },
-                                });
-                                setIsOpen((prev) => !prev);
-                              }}
-                            >
-                              Demoday
-                            </S.SubMenu>
-                          </S.SubMenuContainer>
+                          <AnimatePresence>
+                            {subMenu === "/activities" && (
+                              <motion.div
+                                initial={{ height: 0 }}
+                                animate={{ height: "auto" }}
+                                exit={{ height: 0, transition: { delay: 0.5 } }}
+                              >
+                                <S.SubMenuContainer
+                                  id="/activities"
+                                  subMenu={subMenu}
+                                >
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                  >
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "1" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Curriculum
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "2" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Session
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "3" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Project
+                                    </S.SubMenu>
+                                    <S.SubMenu
+                                      onClick={() => {
+                                        router.push({
+                                          pathname: path,
+                                          query: { key: "4" },
+                                        });
+                                        setIsOpen((prev) => !prev);
+                                      }}
+                                    >
+                                      Demoday
+                                    </S.SubMenu>
+                                  </motion.div>
+                                </S.SubMenuContainer>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         )}
                       </>
                     ))}
@@ -251,7 +261,7 @@ const NavBar = () => {
                   <S.NoticeContainer>
                     <p>ⓒ NEXT X Likelion</p>
                     <p>korea@likelion.org</p>
-                    <p>korea university, Anam-dong, Seongbuk-gu,</p>
+                    <p>Korea University, Anam-dong, Seongbuk-gu,</p>
                     <p>Seoul, South Korea</p>
                   </S.NoticeContainer>
                 </S.MenuContainer>
