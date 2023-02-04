@@ -4,6 +4,7 @@ import { THEME } from "styles/theme";
 export const Container = styled.div<{ isMobile: boolean }>`
   width: 100%;
   min-height: 100%;
+  padding: 6rem 3rem;
 `;
 
 export const MainContainer = styled.div<{ isMobile: boolean }>`
@@ -12,7 +13,6 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 4%;
   box-sizing: border-box;
 
   ${(props) =>
@@ -69,12 +69,17 @@ export const SessionTitleBox = styled.div<{ isMobile: boolean }>`
 
   & > p {
     color: ${THEME.ORANGE};
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.4rem;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 955px) {
     flex-direction: column;
+
+    & > p {
+      color: ${THEME.ORANGE};
+      font-size: 2rem;
+    }
   }
 
   @media screen and (max-width: 820px) {

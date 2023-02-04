@@ -1,22 +1,13 @@
 import * as S from "styles/activities/components/project/index";
-import Head from "next/head";
-import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
-import SessionDev from "public/assets/activities/session-development.png";
-import SessionStartup from "public/assets/activities/session-startup.png";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
-import {
-  DemodayFinalLottie,
-  DemodayInHouseLottie,
-} from "pages/components/lottie/lottie";
 import SliderSlick from "pages/components/sliderSlick";
 import { ProjectItem } from "pages/constants/project";
 
 export default function Curriculrum() {
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const isDesktop = useMediaQuery({ minDeviceWidth: 820 });
   const isMobile = useMediaQuery({ maxWidth: 820 });

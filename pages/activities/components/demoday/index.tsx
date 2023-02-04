@@ -34,33 +34,35 @@ export default function Curriculrum() {
                 <DemodayInHouseLottie />
               </S.SessionImgBox>
               <S.SessionTitleBox isMobile={isMobile}>
-                <p>NEXT 데모데이</p>
+                NEXT 데모데이
               </S.SessionTitleBox>
               <S.SessionInfoBox isMobile={isMobile}>
-                4주간 진행된 여름방학 프로젝트를 알럼나이와 투자심사역 앞에서
-                발표합니다. 피드백 후, 서비스 유지/피벗을 결정합니다.
+                <p>
+                  4주간 진행된 여름방학 프로젝트를 알럼나이와 투자심사역 앞에서
+                  발표합니다. 피드백 후, 서비스 유지/피벗을 결정합니다.
+                </p>
               </S.SessionInfoBox>
-              <S.SessionInfoBox isMobile={isMobile}>
+              <S.SessionDayBox isMobile={isMobile}>
                 ㅣ8월 5일 예정 I
-              </S.SessionInfoBox>
+              </S.SessionDayBox>
             </S.SessionWrapper>
             <S.SessionWrapper isMobile={isMobile}>
               <S.SessionImgBox isMobile={isMobile}>
                 <DemodayFinalLottie />
               </S.SessionImgBox>
               <S.SessionTitleBox isMobile={isMobile}>
-                <p>연합 데모데이</p>
+                연합 데모데이
               </S.SessionTitleBox>
               <S.SessionInfoBox isMobile={isMobile}>
-                1년간 활동의 결과물을 투자심사역 앞에서 발표하고, 최종 창업 진행
-                여부를 결정합니다.
+                <p>
+                  1년간 활동의 결과물을 투자심사역 앞에서 발표하고, 최종 창업
+                  진행 여부를 결정합니다.
+                </p>
+                <p>서울대학교 멋쟁이사자처럼과 함께 진행합니다.</p>
               </S.SessionInfoBox>
-              <S.SessionInfoBox isMobile={isMobile}>
-                서울대학교 멋쟁이사자처럼과 함께 진행합니다.
-              </S.SessionInfoBox>
-              <S.SessionInfoBox isMobile={isMobile}>
+              <S.SessionDayBox isMobile={isMobile}>
                 ㅣ12월 예정 I
-              </S.SessionInfoBox>
+              </S.SessionDayBox>
             </S.SessionWrapper>
           </S.MainContainer>
         </S.Container>

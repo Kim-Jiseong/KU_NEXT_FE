@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { THEME } from "styles/theme";
 import { motion } from "framer-motion";
+import { fadeIn } from "styles/activities/style";
 export const NavBarContainer = styled.div<{
   scroll: boolean;
   pathname: string;
@@ -149,17 +150,17 @@ export const Menu = styled.div<{ selected: boolean }>`
       background-color: ${THEME.ORANGE};
     `}
   &:hover {
-    background-color: ${THEME.ORANGE};
+    color: black;
+    background-color: ${THEME.LIGHT_GRAY};
   }
 `;
-export const SubMenuContainer = styled.div`
+export const SubMenuContainer = styled.div<{ subMenu: any }>`
   width: 100%;
-  background-color: #151515;
-  /* padding: 2rem 0; */
 `;
 export const SubMenu = styled.div`
   color: white;
   padding: 1.2rem 4rem;
+  background-color: #151515;
 `;
 export const NoticeContainer = styled.section`
   color: white;

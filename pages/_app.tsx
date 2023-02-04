@@ -1,21 +1,46 @@
 import GlobalStyle from "styles/GlobalStyle";
+import { useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 import thumbnail from "public/img/thumbnail.png";
-import { useEffect } from "react";
 import Script from "next/script";
-import { useRouter } from "next/router";
+import { useRouter, Router } from "next/router";
 import { ChakraProvider } from "@chakra-ui/react";
+import Loading from "pages/components/loading/index";
 // import * as gtag from "libs/gtag";
 import Head from "next/head";
 import Header from "pages/components/header";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 // export default function App({ Component, pageProps, session }: AppProps) {
 export default function App({
   Component,
   pageProps,
 }: AppProps<{ session: Session }>) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const start = () => {
+      // NProgress.start();
+      setLoading(true);
+    };
+    const end = () => {
+      // NProgress.done();
+      setLoading(false);
+    };
+
+    Router.events.on("routeChangeStart", start);
+    Router.events.on("routeChangeComplete", end);
+    Router.events.on("routeChangeError", end);
+
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    };
+  }, []);
   // // GA 설정 시작
   // const router = useRouter();
   // useEffect(() => {
@@ -60,7 +85,8 @@ export default function App({
             }}
           /> */}
             {/* GA 설정 끝 */}
-            <Component {...pageProps} />
+            {loading ? <Loading /> : <Component {...pageProps} />}
+            {/* <Loading /> */}
           </GlobalStyle>
         </ChakraProvider>
       </RecoilRoot>

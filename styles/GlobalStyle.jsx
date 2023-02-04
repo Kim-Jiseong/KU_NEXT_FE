@@ -31,6 +31,12 @@ const GlobalStyleWrapper = createGlobalStyle`
   ::-webkit-scrollbar {
   display: none;
 }
+.pnlm-about-msg {
+  visibility: hidden;
+}
+.pnlm-about-msg a {
+  visibility: hidden;
+}
   a {
     color: inherit;
     text-decoration: none;
@@ -82,11 +88,18 @@ const GlobalStyleWrapper = createGlobalStyle`
     background: ${THEME.ORANGE} !important;
   }
 
+
   .ant-tabs-tab {
     margin: 0 3.2rem 0 3.2rem !important;
     @media screen and (max-width: 820px) {
       margin: 0 1.6rem !important;
     }
+  }
+
+  @media screen and (max-width:820px) {
+    .ant-tabs-top >.ant-tabs-nav {
+         margin: 0 !important;
+      }
   }
 
   a:hover,

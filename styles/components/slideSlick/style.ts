@@ -9,6 +9,7 @@ export const MainContainer = styled.div`
 export const ElementWrapper = styled.div`
   width: 60%;
   padding: 2rem;
+  background-color: transparent !important;
 
   @media screen and (max-width: 500px) {
     padding: 0rem;
