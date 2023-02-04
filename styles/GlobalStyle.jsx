@@ -31,6 +31,12 @@ const GlobalStyleWrapper = createGlobalStyle`
   ::-webkit-scrollbar {
   display: none;
 }
+.pnlm-about-msg {
+  visibility: hidden;
+}
+.pnlm-about-msg a {
+  visibility: hidden;
+}
   a {
     color: inherit;
     text-decoration: none;
