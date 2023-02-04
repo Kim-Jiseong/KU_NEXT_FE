@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import { useRouter } from "next/router";
 import { Tabs } from "antd";
 import { ACTIVITY_ITEMS } from "pages/constants/activities";
-import Curriculrum from "./components/curriculrum";
+import Curriculrum from "./components/curriculum";
 import Session from "./components/session";
 import Project from "./components/project";
 import Demoday from "./components/demoday";

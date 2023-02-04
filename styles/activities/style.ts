@@ -24,7 +24,7 @@ export const Container = styled.div<{ isMobile: boolean }>`
   ${(props) =>
     props.isMobile &&
     css`
-      padding: 60px 24px 24px;
+      padding: 60px 0px 24px;
     `}
 `;
 

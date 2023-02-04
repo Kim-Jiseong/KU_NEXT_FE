@@ -28,37 +28,37 @@ export default function History() {
   }, []);
   return (
     <S.Container isMobile={isMobile} className="mount">
-        <ScrollProgress></ScrollProgress>
-        {/* <S.ProgressIndicator></S.ProgressIndicator> */}
-        <S.MainContainer isMobile={isMobile} className="mount">
-          {HistoryItems.map(({ YEAR, TITLE, CONTENT}) => (
-              <S.TextWrapper key={YEAR} data-aos="fade">
-                  <S.TitleTextElementWrapper>
-                      <span><b>{YEAR}</b></span>
-                      <span style={{fontSize: "2.4rem"}}>{TITLE}</span>
-                  </S.TitleTextElementWrapper>
-                  <S.TextElementWrapper>
-                    {/* {IsActing ? (
-                      <S.Badge>Acting</S.Badge>
-                    ) : (<div></div>
-                    )} */}
-                    {CONTENT.map((item) => <p>
-                      <S.FlexRow>
-                            {item[1] == 2 ? (<S.TextElementWrapper style={{width: "10rem"}}><S.Badge>Alumni</S.Badge></S.TextElementWrapper>) :
-                            item[1] == 3 ? (<S.TextElementWrapper style={{width: "10rem"}}></S.TextElementWrapper>) :
-                            item[1] == 1 ? (<S.TextElementWrapper style={{width: "10rem"}}><S.Badge>Acting</S.Badge></S.TextElementWrapper>) : 
-                            (<br/>)
-                            }
-                          <S.TextElementWrapper>
-                          {item[0]}
-                          </S.TextElementWrapper>
-                      </S.FlexRow>
-                    </p>)}
+            <ScrollProgress></ScrollProgress>
+            {/* <S.ProgressIndicator></S.ProgressIndicator> */}
+            <S.MainContainer isMobile={isMobile} className="mount">
+              {HistoryItems.map(({ YEAR, TITLE, CONTENT}) => (
+                  <S.TextWrapper key={YEAR} data-aos="fade">
+                      <S.TitleTextElementWrapper isMobile={isMobile}>
+                          <span><b>{YEAR}</b></span>
+                          <span style={{fontSize: "2.4rem"}}>{TITLE}</span>
+                      </S.TitleTextElementWrapper>
+                      <S.TextElementWrapper isMobile={isMobile}>
+                        {/* {IsActing ? (
+                          <S.Badge>Acting</S.Badge>
+                        ) : (<div></div>
+                        )} */}
+                        {CONTENT.map((item) => <p>
+                          <S.FlexRow>
+                                {item[1] == 2 ? (<S.TextElementWrapper style={{width: "10rem"}}><S.Badge>Alumni</S.Badge></S.TextElementWrapper>) :
+                                item[1] == 3 ? (<S.TextElementWrapper style={{width: "10rem"}}></S.TextElementWrapper>) :
+                                item[1] == 1 ? (<S.TextElementWrapper style={{width: "10rem"}}><S.Badge>Acting</S.Badge></S.TextElementWrapper>) : 
+                                (<br/>)
+                                }
+                              <S.TextElementWrapper isMobile={isMobile}>
+                              {item[0]}
+                              </S.TextElementWrapper>
+                          </S.FlexRow>
+                        </p>)}
 
-                  </S.TextElementWrapper>
-              </S.TextWrapper>
-          ))}
-        </S.MainContainer>
+                      </S.TextElementWrapper>
+                  </S.TextWrapper>
+              ))}
+          </S.MainContainer>
     </S.Container>
   );
 }

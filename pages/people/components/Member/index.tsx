@@ -1,9 +1,7 @@
 import * as S from "styles/components/member/style";
-import Head from "next/head";
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import CurriculrumDesktop from "public/assets/curriculum-desktop.png";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
 import { PEOPLE_INFORMATION } from "pages/constants/people";
@@ -28,24 +26,18 @@ export default function Member() {
         <S.Container className="mount" isMobile={isMobile}>
           <>
             {PEOPLE_INFORMATION &&
-              PEOPLE_INFORMATION.map((item: PEOPLE_INFORMATION_TYPE) => {
+              PEOPLE_INFORMATION.map((item: PEOPLE_INFORMATION_TYPE, index) => {
                 return (
-                  <S.MemberWrapper>
+                  <S.MemberWrapper key={index}>
                     <S.MemberImgBox>
                       {item.imgSrc ? (
                         <Image
                           src={item.imgSrc}
-                          alt="김"
+                          alt={item.name}
                           width={220}
                           height={220}
                         />
                       ) : (
-                        // <Image
-                        //   alt="김"
-                        //   src="/public/images/profile/10기_김나영.png"
-                        //   width={220}
-                        //   height={220}
-                        // />
                         <div
                           style={{
                             backgroundColor: "#333333",
