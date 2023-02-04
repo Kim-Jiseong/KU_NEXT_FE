@@ -10,25 +10,25 @@ export const Container = styled.div<{ isMobile: boolean }>`
   justify-content: center;
   align-items: start;
 
-    ${(props) =>
-      props.isMobile &&
-      css`
-        padding: 10rem 8%;
+  ${(props) =>
+    props.isMobile &&
+    css`
+      padding: 10rem 8%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      & div {
+        display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        & div {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          padding-bottom: 5rem;
-        }
-        & div:first-child p {
-          font-size: 1.8rem;
-          font-weight: 500;
-          padding-bottom: 3rem;
-        }
-      `}
+        width: 100%;
+        padding-bottom: 5rem;
+      }
+      & div:first-child p {
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding-bottom: 3rem;
+      }
+    `}
 `;
 
 export const TextWrapper = styled.div`
@@ -84,6 +84,9 @@ export const ImageWrapper = styled.div<{ isMobile: boolean }>`
     props.isMobile &&
     css`
       padding: 2rem;
+
+      flex-direction: row !important;
+      justify-content: space-between;
       & div {
         width: 40%;
         margin: 1rem;
@@ -116,7 +119,6 @@ position: relative;
   transform: scale(1.13);
 `;
 
-
 // export const PartnerContainer = styled.div<{ isMobile: boolean }>`
 //   width: 100%;
 //   padding: 5rem;
@@ -126,6 +128,5 @@ position: relative;
 //   flex-wrap: wrap;
 //   justify-content: center;
 //   align-items: center;
-
 
 // `;
