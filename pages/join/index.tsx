@@ -39,7 +39,7 @@ export default function Join() {
     },
   };
   useEffect(() => {
-    console.log("loaded");
+    // console.log("loaded");
     setLoading(false);
   }, [isMobile, isDesktop]);
   useEffect(() => {
@@ -152,7 +152,6 @@ export default function Join() {
             <S.RocketContainer
               onClick={() => {
                 setModalOpen((modalOpen) => !modalOpen);
-                console.log(modalOpen);
               }}
               launched={launch}
             >

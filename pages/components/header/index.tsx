@@ -278,7 +278,8 @@ const NavBar = () => {
     <>
       {fullscreen && (
         <S.NavBarContainer
-          scroll={scrollPosition > fullscreen * 0.3 ? true : false}
+          scroll={scrollPosition > 60 ? true : false}
+          // scroll={scrollPosition > fullscreen * 0.2 ? true : false}
           pathname={pathname}
         >
           <S.NavBarLogo

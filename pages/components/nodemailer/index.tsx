@@ -39,7 +39,6 @@ function NodeMailer() {
     }));
   const onSelectFile = useCallback((e: any) => {
     setFileInfo(e.target.files[0]);
-    console.log("파일 들어감");
     let file = e.target.files[0];
   }, []);
 
@@ -56,7 +55,6 @@ function NodeMailer() {
     // }
     try {
       await sendContactForm(formData);
-      console.log("보냄");
       setTouched({});
       setState(initState);
       // setFileInfo(null);

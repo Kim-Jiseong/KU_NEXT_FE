@@ -59,10 +59,9 @@ export default function UploadPage() {
       },
     }));
     setFile(file);
-    console.log(file);
   };
   const submitSheet = async () => {
-    console.log(values);
+    // console.log(values);
     await fetch("/api/email", {
       method: "POST",
       body: JSON.stringify(values),
@@ -71,7 +70,7 @@ export default function UploadPage() {
       },
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTouched({});
         setState(initState);
         setS3url("");

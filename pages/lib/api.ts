@@ -2,8 +2,6 @@
 import axios from "axios";
 
 export const sendContactForm = async (data: any) => {
-  console.log("프론트 데이터", data);
-
   await axios
     .post(
       "/api/contact",

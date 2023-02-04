@@ -16,7 +16,6 @@ export const ImageWrapper = styled.div`
     content: "";
     padding-bottom: 100%;
     display: block;
-    background-color: green;
   }
   & img {
     position: absolute;
