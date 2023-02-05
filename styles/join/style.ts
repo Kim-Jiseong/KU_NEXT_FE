@@ -232,15 +232,20 @@ export const TitleWrapper = styled.div<{ isMobile: boolean }>`
 `;
 export const RocketInfo = styled.div`
   width: 100%;
-  position: absolute;
+  margin-top: 1rem;
+  /* position: absolute; */
   text-align: center;
-  left: 0;
+  /* left: 0; */
   opacity: 0;
-  bottom: 20px;
+  /* bottom: 20px; */
   color: white;
-  font-size: 1.8rem;
-  font-weight: 700;
-  animation: ${fadeIn} 1s 4s alternate infinite;
+
+  animation: ${fadeIn} 1s 5s alternate infinite;
+  & p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: ${THEME.LIGHT_GRAY};
+  }
 `;
 export const InfoModal = styled.div`
   display: flex;

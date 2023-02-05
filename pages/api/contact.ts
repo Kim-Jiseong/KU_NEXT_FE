@@ -107,7 +107,7 @@ const generateEmailContent = (data: any) => {
             <h2>11기 리크루팅 안내</h2>
             <br />
             <p>
-              1차 서류평가 결과는 <b style="color: #f7941e">2월 20일</b> 이후 일괄
+              1차 서류평가 결과는 <b style="color: #f7941e">2월 19일</b> 이후 일괄
               발송되며, 합격자와 불합격자 모두에게 결과를 통보해드립니다.
             </p>
             <p>
@@ -143,7 +143,7 @@ const generateEmailContent = (data: any) => {
               <br />
               <span style="color: #f7941e">3. 오리엔테이션 필참</span>
               <br />
-              최종 합격 이후 <b style="color: #f7941e">3월 5일</b>에 진행되는 OT는
+              최종 합격 이후 <b style="color: #f7941e">3월 5일 14시~17시</b> 퓨처플레이(아크로서울포레스트 D타워 8F)에서 진행되는 OT는
               필수 참여입니다. 원활한 학회 운영을 위해, OT를 고려하여 개인 일정을
               조정해주시면 감사하겠습니다
             </p>

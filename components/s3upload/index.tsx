@@ -201,7 +201,7 @@ export default function UploadPage() {
             <FormLabel fontSize={"1.8rem"}>전화번호</FormLabel>
             <Input
               size={"lg"}
-              type="text"
+              type="number"
               name="phone"
               errorBorderColor="red.300"
               value={values.phone}

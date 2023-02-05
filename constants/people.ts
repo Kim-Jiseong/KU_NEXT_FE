@@ -140,7 +140,7 @@ export const PEOPLE_INFORMATION: PEOPLE_INFORMATION_TYPE[] = [
   },
   {
     gen: PEOPLE_ITEMS.TEN,
-    name: "운정윤",
+    name: "윤정윤",
     department: DEPARTMENT.RUSSIAN_LANGUAGE_AND_LITERATURE,
     classOf: 18,
     imgSrc: "/images/profile/10기_윤정윤.png",

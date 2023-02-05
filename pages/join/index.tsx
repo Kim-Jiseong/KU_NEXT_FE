@@ -74,6 +74,9 @@ export default function Join() {
               <img src={Text.src} />
               <img src={Logo.src} />
               <p>11기 모집</p>
+              <S.RocketInfo>
+                <p>로켓을 클릭해보세요!</p>
+              </S.RocketInfo>
             </S.TitleWrapper>
           )}
           {launch && (
@@ -118,7 +121,7 @@ export default function Join() {
                       <br />
                       <span>2. 리크루팅 일정</span>
                       <br />
-                      1차 서류 결과 발표: 2월 20일 <br />
+                      1차 서류 결과 발표: 2월 19일 <br />
                       2차 면접: 2월 26일
                       <br />
                       최종 합격 발표: 3월 2일
@@ -143,9 +146,10 @@ export default function Join() {
                       <br />
                       <span>5. 오리엔테이션 필참</span>
                       <br />
-                      최종 합격 이후 <b>3월 5일</b>에 진행되는 OT는 필수
-                      참여입니다. 원활한 학회 운영을 위해, OT를 고려하여 개인
-                      일정을 조정해주시면 감사하겠습니다
+                      최종 합격 이후 <b>3월 5일 14시~17시</b>,
+                      퓨처플레이(아크로서울포레스트 D타워 8F)에서 진행되는 OT는
+                      필수 참여입니다. 원활한 학회 운영을 위해, OT를 고려하여
+                      개인 일정을 조정해주시면 감사하겠습니다
                     </p>
                     <S.CheckContainer>
                       <input
@@ -212,11 +216,6 @@ export default function Join() {
                 src="https://media-public.canva.com/Y2Ods/MAD9dPY2Ods/1/tl.png"
               />
             </S.Planet>
-            {!modalOpen && !launch && (
-              <S.RocketInfo>
-                <p>로켓을 클릭해보세요!</p>
-              </S.RocketInfo>
-            )}
           </S.SpaceContainer>
 
           <ReactPannellum
