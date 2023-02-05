@@ -150,7 +150,7 @@ export default function Join() {
                       <button
                         onClick={() =>
                           (location.href =
-                            "https://next-recruit.s3.ap-northeast-2.amazonaws.com/assets/NEXT_11%EA%B8%B0_%EC%A7%80%EC%9B%90%EC%84%9C_%EC%96%91%EC%8B%9D.docx")
+                            "https://next-recruit.s3.ap-northeast-2.amazonaws.com/assets/%EC%84%B1%ED%95%A8_%ED%95%99%EB%B2%88_NEXT%EC%A7%80%EC%9B%90%EC%84%9C.docx")
                         }
                       >
                         지원서 다운로드
