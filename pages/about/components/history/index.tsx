@@ -9,15 +9,12 @@ import React, {
 } from "react";
 // import classNames from 'classnames';
 import * as S from "styles/about/components/history/styles";
-import { ScrollProgress } from "pages/components/scrollprogress";
+import { ScrollProgress } from "components/scrollprogress";
 import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
 import "aos/dist/aos.css";
 // import { useRouter } from "next/router";
-import {
-  ABOUT_HISTORY,
-  ABOUT_HISTORY as HistoryItems,
-} from "pages/constants/about";
+import { ABOUT_HISTORY, ABOUT_HISTORY as HistoryItems } from "constants/about";
 
 export const DESKTOP_TAB = {
   width: "100%",

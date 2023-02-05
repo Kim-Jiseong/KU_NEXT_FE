@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import {
   DemodayFinalLottie,
   DemodayInHouseLottie,
-} from "pages/components/lottie/lottie";
+} from "components/lottie/lottie";
 
 export default function Curriculrum() {
   const router = useRouter();

@@ -6,10 +6,10 @@ import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 import { useRouter, Router } from "next/router";
 import { ChakraProvider } from "@chakra-ui/react";
-import Loading from "pages/components/loading/index";
+import Loading from "components/loading/index";
 // import * as gtag from "libs/gtag";
 import Head from "next/head";
-import Header from "pages/components/header";
+import Header from "components/header";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 // export default function App({ Component, pageProps, session }: AppProps) {

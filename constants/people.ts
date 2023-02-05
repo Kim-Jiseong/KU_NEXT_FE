@@ -1,4 +1,4 @@
-import { PEOPLE_INFORMATION_TYPE } from "pages/types/people/people-information";
+import { PEOPLE_INFORMATION_TYPE } from "types/people/people-information";
 
 export const PEOPLE_ITEMS = {
   TEN: 10,

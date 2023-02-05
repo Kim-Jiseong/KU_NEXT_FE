@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 // import { useRouter } from "next/router";
 import { Tabs } from "antd";
-import { ABOUT_ITEMS } from "pages/constants/about";
+import { ABOUT_ITEMS } from "constants/about";
 import Partners from "pages/about/components/partners";
 import Introduction from "pages/about/components/introduction";
 import Greeting from "pages/about/components/greeting";

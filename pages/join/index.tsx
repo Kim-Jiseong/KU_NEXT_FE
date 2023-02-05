@@ -8,12 +8,12 @@ import spaceImg from "public/assets/space_pressed.jpg";
 // import spaceImg2 from "public/assets/space2.jpg";
 // import spaceImg3 from "public/assets/space3.jpg";
 import ReactPannellum, { getConfig } from "react-pannellum";
-import { FireLottie } from "pages/components/lottie/lottie";
+import { FireLottie } from "components/lottie/lottie";
 import RocketImg from "public/assets/Rocket.png";
 import { motion } from "framer-motion";
-import S3upload from "pages/components/s3upload/index";
+import S3upload from "components/s3upload/index";
 import { useRecoilState } from "recoil";
-import { joinModalOpen, isLaunched } from "pages/constants/atoms";
+import { joinModalOpen, isLaunched } from "constants/atoms";
 import Text from "public/assets/homeMainSmallLogo.png";
 import Logo from "public/assets/logo.png";
 const variants = {

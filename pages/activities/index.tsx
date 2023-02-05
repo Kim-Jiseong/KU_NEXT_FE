@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
 import { Tabs } from "antd";
-import { ACTIVITY_ITEMS } from "pages/constants/activities";
+import { ACTIVITY_ITEMS } from "constants/activities";
 import Curriculrum from "./components/curriculum";
 import Session from "./components/session";
 import Project from "./components/project";
