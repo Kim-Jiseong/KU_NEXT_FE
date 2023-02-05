@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import * as S from "styles/components/s3upload/style";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { sendContactForm } from "pages/lib/api";
-import { joinModalOpen, isLaunched } from "pages/constants/atoms";
+import { sendContactForm } from "lib/api";
+import { joinModalOpen, isLaunched } from "constants/atoms";
 import {
   Button,
   Container,

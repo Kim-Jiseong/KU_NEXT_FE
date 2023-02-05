@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { URLS } from "pages/constants/urls";
+import { URLS } from "constants/urls";
 import * as S from "styles/components/header/style";
 import LogoImg from "public/assets/logo.png";
 import BlackLogoImg from "public/assets/blackLogo.png";

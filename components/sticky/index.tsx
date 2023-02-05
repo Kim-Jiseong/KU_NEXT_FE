@@ -5,7 +5,7 @@ import * as S from "styles/components/sticky/style";
 import { useMediaQuery } from "react-responsive";
 import homecoming from "public/assets/homecoming.jpg";
 import { Fade } from "react-awesome-reveal";
-import Slick from "pages/components/slick/index";
+import Slick from "components/slick/index";
 import { useRouter } from "next/router";
 export default function Sticky() {
   const isDesktop = useMediaQuery({ minDeviceWidth: 820 });

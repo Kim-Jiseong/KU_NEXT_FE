@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
 import { Tabs } from "antd";
-import { PEOPLE_ITEMS } from "pages/constants/people";
+import { PEOPLE_ITEMS } from "constants/people";
 import Member from "./components/Member";
 
 const { TEN } = PEOPLE_ITEMS;

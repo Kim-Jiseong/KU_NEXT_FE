@@ -4,8 +4,8 @@ import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
-import SliderSlick from "pages/components/sliderSlick/index";
-import { ProjectItem } from "pages/constants/project";
+import SliderSlick from "components/sliderSlick/index";
+import { ProjectItem } from "constants/project";
 
 export default function Curriculrum() {
   const [loading, setLoading] = useState(true);

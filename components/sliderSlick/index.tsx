@@ -1,39 +1,51 @@
 import { useEffect, useRef } from "react";
-import * as S from "styles/components/slick/style";
+import * as S from "styles/components/slideSlick/style";
 import Slider from "react-slick";
-import { Alumni } from "pages/constants/alumni";
 import AOS from "aos";
 import "aos/dist/aos.css";
-function Slick() {
+import { SLIDE_ITEM } from "types/people/slide-item";
+
+interface Props {
+  slideItemGroup: SLIDE_ITEM[];
+  slideSpeed?: number;
+  slideShowGroup?: number;
+}
+
+const Slick: React.FC<Props> = ({
+  slideItemGroup,
+  slideSpeed,
+  slideShowGroup,
+  ...rest
+}) => {
   useEffect(() => {
     AOS.init();
   });
 
-  const AlumniList = Alumni;
   const settings = {
     dots: false,
-    arrows: false,
+    arrows: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    // lazyLoad: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     initialSlide: 0,
     pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
       {
@@ -48,7 +60,7 @@ function Slick() {
   return (
     <S.MainContainer>
       <Slider {...settings}>
-        {AlumniList.map(({ name, src }) => (
+        {slideItemGroup.map(({ name, src }) => (
           <S.ElementWrapper key={name} data-aos="fade">
             <S.ImageWrapper>
               <img src={src.src} />
@@ -58,6 +70,6 @@ function Slick() {
       </Slider>
     </S.MainContainer>
   );
-}
+};
 
 export default Slick;

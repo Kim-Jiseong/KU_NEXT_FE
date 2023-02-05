@@ -1,4 +1,4 @@
-import { SLIDE_ITEM } from "pages/types/people/slide-item";
+import { SLIDE_ITEM } from "types/people/slide-item";
 import bettle from "public/images/activities/project/project-bettle.png";
 import catNeighbor from "public/images/activities/project/project-cat-neighbor.png";
 import jaeumi from "public/images/activities/project/project-jaeumi.png";

@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
-import { PEOPLE_INFORMATION } from "pages/constants/people";
-import { PEOPLE_INFORMATION_TYPE } from "pages/types/people/people-information";
+import { PEOPLE_INFORMATION } from "constants/people";
+import { PEOPLE_INFORMATION_TYPE } from "types/people/people-information";
 import AOS from "aos";
 
 export default function Member() {

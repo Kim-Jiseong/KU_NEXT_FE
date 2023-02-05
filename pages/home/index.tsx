@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import * as S from "styles/home/style";
 import { useMediaQuery } from "react-responsive";
-import Intro from "pages/components/intro";
+import Intro from "components/intro";
 import Logo from "public/assets/logo.png";
 import MainBG from "public/assets/home-bg-1.png";
 import Section2Img from "public/assets/main_section2.png";
@@ -14,9 +14,9 @@ import {
   SessionLottie,
   ProjectLottie,
   DemodayLottie,
-} from "pages/components/lottie/lottie";
-import { Partners } from "pages/constants/partners";
-import Sticky from "pages/components/sticky";
+} from "components/lottie/lottie";
+import { Partners } from "constants/partners";
+import Sticky from "components/sticky";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
