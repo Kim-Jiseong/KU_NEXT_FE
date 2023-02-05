@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { THEME } from "styles/theme";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isMobile: boolean }>`
   width: 100%;
   padding: 6rem 3rem;
   display: flex;

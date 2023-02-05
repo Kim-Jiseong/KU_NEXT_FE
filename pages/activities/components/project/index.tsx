@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRouter } from "next/router";
-import SliderSlick from "pages/components/sliderSlick";
+import SliderSlick from "pages/components/sliderSlick/index";
 import { ProjectItem } from "pages/constants/project";
 
 export default function Curriculrum() {

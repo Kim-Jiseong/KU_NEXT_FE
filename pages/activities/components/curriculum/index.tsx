@@ -22,7 +22,7 @@ export default function Curriculrum() {
   return (
     <>
       {!loading && (
-        <S.Container className="mount">
+        <S.Container className="mount" isMobile={isMobile}>
           <S.MainContainer isMobile={isMobile}>
             <S.TextWrapper isMobile={isMobile}>
               <p className="main-text">
