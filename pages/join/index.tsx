@@ -5,8 +5,8 @@ import { useMediaQuery } from "react-responsive";
 import * as S from "styles/join/style";
 import spaceImg from "public/assets/space_pressed.jpg";
 // import spaceImg from "public/assets/space.jpg";
-import spaceImg2 from "public/assets/space2.jpg";
-import spaceImg3 from "public/assets/space3.jpg";
+// import spaceImg2 from "public/assets/space2.jpg";
+// import spaceImg3 from "public/assets/space3.jpg";
 import ReactPannellum, { getConfig } from "react-pannellum";
 import { FireLottie } from "pages/components/lottie/lottie";
 import RocketImg from "public/assets/Rocket.png";
@@ -26,6 +26,7 @@ export default function Join() {
   const [launch, setLaunch] = useRecoilState(isLaunched);
   const [modalPage, setModalPage] = useState(1);
   const [modalOpen, setModalOpen] = useRecoilState(joinModalOpen);
+  const [accept, setAccept] = useState(false);
   const isDesktop = useMediaQuery({ minDeviceWidth: 1000 });
   const isMobile = useMediaQuery({ maxWidth: 1000 });
   const config = {
@@ -146,7 +147,25 @@ export default function Join() {
                       참여입니다. 원활한 학회 운영을 위해, OT를 고려하여 개인
                       일정을 조정해주시면 감사하겠습니다
                     </p>
-                    <S.NextBtnWrapper isMobile={isMobile}>
+                    <S.CheckContainer>
+                      <input
+                        checked={accept}
+                        type="checkbox"
+                        id="acceptCheck"
+                        onClick={() => {
+                          setAccept((prev) => !prev);
+                        }}
+                      />
+                      <label
+                        onClick={() => {
+                          setAccept((prev) => !prev);
+                        }}
+                      >
+                        위 안내사항을 확인했으며, 이에 동의합니다.
+                      </label>
+                    </S.CheckContainer>
+
+                    <S.NextBtnWrapper isMobile={isMobile} accepted={accept}>
                       <button
                         onClick={() =>
                           (location.href =
@@ -155,7 +174,16 @@ export default function Join() {
                       >
                         지원서 다운로드
                       </button>
-                      <button onClick={() => setModalPage(2)}>지원하기</button>
+                      <button
+                        disabled={!accept}
+                        onClick={() => {
+                          if (accept) {
+                            setModalPage(2);
+                          }
+                        }}
+                      >
+                        지원하기
+                      </button>
                     </S.NextBtnWrapper>
                   </S.InfoModal>
                 )}
