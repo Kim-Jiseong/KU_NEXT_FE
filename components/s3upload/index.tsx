@@ -211,7 +211,7 @@ export default function UploadPage() {
             <FormErrorMessage>필수</FormErrorMessage>
           </FormControl>
           <FormControl mb={5}>
-            <FormLabel fontSize={"1.8rem"}>
+            <FormLabel fontSize={"1.4rem"}>
               원활한 면접 진행을 위해, 2월26일(일) 중 불가능한 시간대가 있다면,
               사유와 함께 적어주세요
             </FormLabel>

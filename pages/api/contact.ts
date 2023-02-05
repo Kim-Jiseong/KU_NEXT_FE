@@ -24,6 +24,7 @@ const generateEmailContent = (data: any) => {
   const studentNumber = data.studentNumber;
   const receivedEmail = data.email;
   const phone = data.phone;
+  const message = data.message;
   const file = data.file;
   return {
     html: `<!DOCTYPE html>
@@ -100,6 +101,7 @@ const generateEmailContent = (data: any) => {
             <p>학번: ${studentNumber}</p>
             <p>email: ${receivedEmail}</p>
             <p>전화번호: ${phone}</p>
+            <p> ${message}</p>
             <p>파일명: ${file}</p>
     
             <h2>11기 리크루팅 안내</h2>
