@@ -4,6 +4,7 @@ type SheetForm = {
   email: string;
   studentNumber: string;
   phone: string;
+  message: string;
   file: string;
   url: string;
 };
@@ -32,7 +33,7 @@ async function handler(req: any, res: any) {
 
       const response = await sheets.spreadsheets.values.append({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: "A1:F1",
+        range: "A1:G1",
         valueInputOption: "USER_ENTERED",
         requestBody: {
           values: [
@@ -41,6 +42,7 @@ async function handler(req: any, res: any) {
               body.studentNumber,
               body.email,
               body.phone,
+              body.message,
               body.file,
               body.url,
             ],
@@ -49,11 +51,9 @@ async function handler(req: any, res: any) {
       });
       res.status(200).json({ data: response.data });
     } catch (err: any) {
-      res
-        .status(500)
-        .json({
-          message: err.message ?? "뭔가 잘못되었습니다. Something went wrong",
-        });
+      res.status(500).json({
+        message: err.message ?? "뭔가 잘못되었습니다. Something went wrong",
+      });
     }
   }
 }
