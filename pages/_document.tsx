@@ -50,14 +50,10 @@ export default class MyDocument extends Document {
             property="og:description"
             content="고려대학교 소프트웨어창업학회 NEXT"
           />
-          {/* <link
-            rel="icon"
-            href="https://"
-          /> */}
-          {/* <meta
+          <meta
             property="og:image"
-            content="https://yearfourcuts.s3.ap-northeast-2.amazonaws.com/client_assets/thumbnail.png"
-          /> */}
+            content="https://next-recruit.s3.ap-northeast-2.amazonaws.com/assets/mail-main.png"
+          />
 
           <meta
             name="Keywords"

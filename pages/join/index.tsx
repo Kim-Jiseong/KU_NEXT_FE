@@ -3,7 +3,10 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import * as S from "styles/join/style";
-import spaceImg from "public/assets/space.jpg";
+import spaceImg from "public/assets/space_pressed.jpg";
+// import spaceImg from "public/assets/space.jpg";
+import spaceImg2 from "public/assets/space2.jpg";
+import spaceImg3 from "public/assets/space3.jpg";
 import ReactPannellum, { getConfig } from "react-pannellum";
 import { FireLottie } from "pages/components/lottie/lottie";
 import RocketImg from "public/assets/Rocket.png";
@@ -56,8 +59,11 @@ export default function Join() {
   return (
     <div>
       <Head>
-        <title>Join Us</title>
-        <meta name="description" content="고려대학교 소프트웨어창업학회 NEXT" />
+        <title>NEXT: JOIN</title>
+        <meta
+          name="description"
+          content="고려대학교 소프트웨어창업학회 NEXT에 탑승하세요"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!loading && (
@@ -106,15 +112,24 @@ export default function Join() {
                       <br />
                       e. 제출한 지원서는 수정할 수 없습니다.
                       <br /> f. 세종캠퍼스 학생은 지원이 불가합니다. (세종캠퍼스
-                      멋쟁이사자처럼 지원 가능) <br />
+                      멋쟁이사자처럼 지원 가능)
                       <br />
-                      <span>2. 면접 촬영 및 개인정보 수집 안내</span>
+                      <br />
+                      <span>2. 리크루팅 일정</span>
+                      <br />
+                      1차 서류 결과 발표: 2월 20일 <br />
+                      2차 면접: 2월 26일
+                      <br />
+                      최종 합격 발표: 3월 2일
+                      <br />
+                      <br />
+                      <span>3. 면접 촬영 및 개인정보 수집 안내</span>
                       <br /> 면접 평가는 모두 대면으로 이뤄집니다. <br /> 공정한
                       면접 평가를 위해 면접 내용을 촬영 및 수집할 예정입니다.
                       <br />
                       촬영한 면접영상 및 개인정보는 선발과정에서만 활용되며,
                       리크루팅 이후 즉시 폐기될 예정입니다. <br /> <br />
-                      <span>3. 학회 보증금 제도 안내</span> <br />
+                      <span>4. 학회 보증금 제도 안내</span> <br />
                       원활한 학회 운영을 위해 보증금 제도를 운영하고 있습니다.
                       <br />
                       새로 들어오시는 학회원들은 <b>10만원</b>의 보증금을
@@ -125,7 +140,7 @@ export default function Join() {
                       확인하실 수 있으며 활동이 끝난 후 남은 금액을 1/n 하여
                       전액 반환해 드립니다. <br />
                       <br />
-                      <span>4. 오리엔테이션 필참</span>
+                      <span>5. 오리엔테이션 필참</span>
                       <br />
                       최종 합격 이후 <b>3월 5일</b>에 진행되는 OT는 필수
                       참여입니다. 원활한 학회 운영을 위해, OT를 고려하여 개인

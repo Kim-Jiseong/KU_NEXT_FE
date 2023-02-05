@@ -130,15 +130,17 @@ export default function UploadPage() {
     <S.Container>
       <S.FormContainer>
         <div>
-          <Heading fontSize={"2rem"} mb={5}>
+          <Heading fontSize={"2rem"} mb={4}>
             지원하기
           </Heading>
+          입력하신 정보와 리크루팅 일정 관련 안내는 작성하신 이메일로
+          발송드립니다. <br />
+          <br />
           {error && (
             <Text color="red.300" my={4} fontSize="xl">
               {error}
             </Text>
           )}
-
           <FormControl
             isRequired
             isInvalid={touched.name && !values.name}
@@ -156,7 +158,6 @@ export default function UploadPage() {
             />
             <FormErrorMessage>필수</FormErrorMessage>
           </FormControl>
-
           <FormControl
             isRequired
             isInvalid={touched.studentNumber && !values.studentNumber}
@@ -191,7 +192,6 @@ export default function UploadPage() {
             />
             <FormErrorMessage>필수</FormErrorMessage>
           </FormControl>
-
           <FormControl
             mb={5}
             isRequired
@@ -212,7 +212,6 @@ export default function UploadPage() {
           <FormControl mb={5} isRequired>
             <FormLabel fontSize={"1.8rem"}>지원서 파일</FormLabel>
           </FormControl>
-
           <div className="pt-8">{file?.name}</div>
           {/* <div className="pt-8">
             {files.map((file, index) => (

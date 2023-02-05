@@ -37,7 +37,6 @@ const NavBar = () => {
   useEffect(() => {
     setFullscreen(window.innerHeight);
     window.addEventListener("scroll", updateScroll);
-    console.log(pathname, URLS.HOME);
   }, []);
   const sidebar = {
     open: {
