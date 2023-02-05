@@ -265,7 +265,10 @@ export const InfoModal = styled.div`
     color: ${THEME.ORANGE};
   }
 `;
-export const NextBtnWrapper = styled.div<{ isMobile: boolean }>`
+export const NextBtnWrapper = styled.div<{
+  isMobile: boolean;
+  accepted: boolean;
+}>`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -298,4 +301,32 @@ export const NextBtnWrapper = styled.div<{ isMobile: boolean }>`
         margin-bottom: 2rem;
       }
     `}
+  ${(props) =>
+    !props.accepted &&
+    css`
+      & button:last-child {
+        background-color: ${THEME.LIGHT_ORANGE};
+        color: ${THEME.ORANGE};
+      }
+    `}
+`;
+export const CheckContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  /* justify-content: space-between; */
+  color: ${THEME.LIGHT_GRAY};
+  & label {
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  & input {
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+  }
+  & input:checked {
+    accent-color: ${THEME.ORANGE};
+  }
 `;
