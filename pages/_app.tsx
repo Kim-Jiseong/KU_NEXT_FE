@@ -4,8 +4,6 @@ import type { AppProps } from "next/app";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
-import thumbnail from "public/img/thumbnail.png";
-import Script from "next/script";
 import { useRouter, Router } from "next/router";
 import { ChakraProvider } from "@chakra-ui/react";
 import Loading from "pages/components/loading/index";

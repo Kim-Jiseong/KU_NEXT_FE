@@ -27,8 +27,8 @@ export const Container = styled.div<{ isMobile: boolean }>`
   ${(props) =>
     props.isMobile &&
     css`
-        width: 100%;
-        padding: 2rem 2rem;
+      width: 100%;
+      padding: 2rem 2rem;
     `}
 `;
 
@@ -51,7 +51,6 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
 
   padding-left: 12rem;
 
-
   ${(props) =>
     props.isMobile &&
     css`
@@ -62,7 +61,6 @@ export const MainContainer = styled.div<{ isMobile: boolean }>`
     `}
 `;
 
-
 export const TextWrapper = styled.div`
   width: 61.8%;
   padding-bottom: 8rem;
@@ -70,18 +68,15 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
 `;
-
 
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
-
 `;
-
 
 export const TitleTextElementWrapper = styled.div<{ isMobile: boolean }>`
   width: 100%;
@@ -107,12 +102,9 @@ export const TitleTextElementWrapper = styled.div<{ isMobile: boolean }>`
   ${(props) =>
     props.isMobile &&
     css`
-    font-size: 2.0rem;
-      }
-  `}
-}
+      font-size: 2rem;
+    `}
 `;
-
 
 export const TextElementWrapper = styled.div<{ isMobile: boolean }>`
   width: 100%;
@@ -142,10 +134,8 @@ export const TextElementWrapper = styled.div<{ isMobile: boolean }>`
   ${(props) =>
     props.isMobile &&
     css`
-    font-size: 1.5rem;
-      }
-  `}
-}
+      font-size: 1.5rem;
+    `}
 `;
 
 export const Badge = styled.button`
@@ -167,7 +157,7 @@ export const Badge = styled.button`
   border-radius: 0.9rem;
   font-size: 0.8rem;
   text-align: center;
-  line-height: 0;  // line-height 적용되면 자동으로 세로 가운데 정렬됨
+  line-height: 0; // line-height 적용되면 자동으로 세로 가운데 정렬됨
 
   color: #f7941e;
 `;

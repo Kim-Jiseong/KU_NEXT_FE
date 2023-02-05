@@ -27,11 +27,9 @@ export const Container = styled.div<{ isMobile: boolean }>`
   justify-content: center;
   align-items: start;
 
-
   & div img {
     width: 100%;
   }
-
 
   ${(props) =>
     props.isMobile &&
@@ -40,7 +38,7 @@ export const Container = styled.div<{ isMobile: boolean }>`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
+
       & div {
         display: flex;
         flex-direction: column;
@@ -51,7 +49,7 @@ export const Container = styled.div<{ isMobile: boolean }>`
         font-size: 1.5rem;
       }
       & div:last-child p:first-child {
-        font-size: 2.0rem;
+        font-size: 2rem;
         font-weight: 500;
         padding-bottom: 3rem;
       }
@@ -72,7 +70,6 @@ export const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  }
 `;
 
 export const ImageElementWrapper = styled.div`
@@ -95,21 +92,26 @@ export const ImageElementWrapper = styled.div`
   }
 `;
 
-export const TextWrapper = styled.div`
+export const TextWrapper = styled.div<{ isMobile: boolean }>`
   width: 61.8%;
   padding-right: 8rem;
   display: flex;
   align-items: center;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   align-content: space-between;
+  ${(props) =>
+    props.isMobile &&
+    css`
+      padding-right: 0;
+    `}
 `;
 
 export const TextElementWrapper = styled.div`
   width: 100%;
   position: relative;
 
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   word-break: keep-all;
   color: #000;
   overflow: hidden;
@@ -129,8 +131,4 @@ export const TextElementWrapper = styled.div`
   & span b {
     color: ${THEME.ORANGE};
   }
-  
-}
-
 `;
-
