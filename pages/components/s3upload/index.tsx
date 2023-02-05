@@ -22,6 +22,7 @@ const initValues = {
   studentNumber: "",
   email: "",
   phone: "",
+  message: "",
   file: "",
   url: "https://next-recruit.s3.ap-northeast-2.amazonaws.com/recruit/",
 };
@@ -204,6 +205,21 @@ export default function UploadPage() {
               name="phone"
               errorBorderColor="red.300"
               value={values.phone}
+              onChange={handleChange}
+              onBlur={onBlur}
+            />
+            <FormErrorMessage>필수</FormErrorMessage>
+          </FormControl>
+          <FormControl mb={5}>
+            <FormLabel fontSize={"1.8rem"}>
+              원활한 면접 진행을 위해, 2월26일(일) 중 불가능한 시간대가 있다면,
+              사유와 함께 적어주세요
+            </FormLabel>
+            <Input
+              size={"lg"}
+              type="text"
+              name="message"
+              value={values.message}
               onChange={handleChange}
               onBlur={onBlur}
             />
