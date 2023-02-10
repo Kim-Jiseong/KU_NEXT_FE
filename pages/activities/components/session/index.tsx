@@ -51,7 +51,7 @@ export default function Session() {
               <S.SessionTitleBox isMobile={isMobile}>
                 <p>창업 세션</p>
                 <span />
-                <p>격주 토요일 3-6시</p>
+                <p>격주 토요일 3 - 6시</p>
               </S.SessionTitleBox>
               <S.SessionInfoBox isMobile={isMobile}>
                 EO Planet에서 제공하는 초기 창업 교육 프로그램을 활용하여 서비스

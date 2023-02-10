@@ -23,7 +23,7 @@ export const ImageWrapper = styled.div`
     content: "";
     padding-bottom: 56%;
     display: block;
-    background-color: green;
+    /* background-color: green; */
   }
   & img {
     position: absolute;

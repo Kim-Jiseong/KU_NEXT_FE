@@ -52,29 +52,30 @@ export default function History() {
                         )} */}
               {CONTENT.map((item) => (
                 <p>
-                  <S.FlexRow key={item[0]}>
-                    {item[1] == 2 ? (
-                      <S.TextElementWrapper
-                        isMobile={isMobile}
-                        style={{ width: "10rem" }}
-                      >
-                        <S.Badge>Alumni</S.Badge>
-                      </S.TextElementWrapper>
-                    ) : item[1] == 3 ? (
-                      <S.TextElementWrapper
-                        isMobile={isMobile}
-                        style={{ width: "10rem" }}
-                      ></S.TextElementWrapper>
-                    ) : item[1] == 1 ? (
-                      <S.TextElementWrapper
-                        isMobile={isMobile}
-                        style={{ width: "10rem" }}
-                      >
-                        <S.Badge>Acting</S.Badge>
-                      </S.TextElementWrapper>
-                    ) : (
-                      <br />
-                    )}
+                  <S.FlexRow isMobile={isMobile} key={item[1]}>
+                    {
+                      item[1] == 2 ? (
+                        <S.TextElementWrapper
+                          isMobile={isMobile}
+                          style={{ width: "10rem" }}
+                        >
+                          <S.Badge>Alumni</S.Badge>
+                        </S.TextElementWrapper>
+                      ) : item[1] == 3 ? (
+                        <S.TextElementWrapper
+                          isMobile={isMobile}
+                          style={{ width: "10rem" }}
+                        ></S.TextElementWrapper>
+                      ) : item[1] == 1 ? (
+                        <S.TextElementWrapper
+                          isMobile={isMobile}
+                          style={{ width: "10rem" }}
+                        >
+                          <S.Badge>Acting</S.Badge>
+                        </S.TextElementWrapper>
+                      ) : null
+                      // <br />
+                    }
                     <S.TextElementWrapper isMobile={isMobile}>
                       {item[0]}
                     </S.TextElementWrapper>

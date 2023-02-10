@@ -71,11 +71,19 @@ export const TextWrapper = styled.div`
   justify-content: space-around;
 `;
 
-export const FlexRow = styled.div`
+export const FlexRow = styled.div<{ isMobile: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-start;
+  ${(props) =>
+    props.isMobile &&
+    css`
+      flex-direction: column;
+      & button {
+        margin-top: 2rem;
+      }
+    `}
 `;
 
 export const TitleTextElementWrapper = styled.div<{ isMobile: boolean }>`
@@ -120,7 +128,7 @@ export const TextElementWrapper = styled.div<{ isMobile: boolean }>`
 
   & p {
     line-height: 220%;
-    padding: 0 rem;
+    padding: 0rem;
   }
 
   & > span {
